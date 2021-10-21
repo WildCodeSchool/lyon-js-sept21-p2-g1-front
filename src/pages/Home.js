@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   return (
-    <div className="bg-red">
+    <div className="bg-grey">
       <ul>
         <li>
           <Link exact to="/">
