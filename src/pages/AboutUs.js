@@ -1,13 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 function AboutUs() {
-    return ( 
-        
-        <div>
-
-        </div>
-    )
+  return <div>Hello</div>;
 }
 
-export default AboutUs
+export default AboutUs;
