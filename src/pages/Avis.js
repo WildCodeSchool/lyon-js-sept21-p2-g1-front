@@ -1,13 +1,7 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
 
 function Avis() {
-    return ( 
-        
-        <div>
-
-        </div>
-    )
+  return <div> </div>;
 }
 
-export default Avis
+export default Avis;

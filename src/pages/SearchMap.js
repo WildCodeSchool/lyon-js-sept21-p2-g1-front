@@ -1,7 +1,7 @@
 import React from 'react';
 
-function AboutUs() {
+function SearchMap() {
   return <div> </div>;
 }
 
-export default AboutUs;
+export default SearchMap;
