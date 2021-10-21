@@ -1,7 +1,6 @@
-
 function App() {
   return (
-    <div>
+    <div className="bg-gray-600">
       <button type="button" className="ui button">
         Follow
       </button>
