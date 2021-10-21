@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-dom';
+import { Switch, Route } from 'react-router-dom';
 import AboutUs from './pages/AboutUs';
 import Avis from './pages/Avis';
 import Home from './pages/Home';

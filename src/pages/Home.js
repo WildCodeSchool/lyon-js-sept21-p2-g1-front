@@ -1,8 +1,30 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home() {
-  return <div />;
+  return (
+    <div className="bg-red-700">
+      <ul>
+        <li>
+          <Link exact to="/">
+            Acceuil
+          </Link>
+        </li>
+        <li>
+          <Link to="/AboutUs">AbousUs</Link>
+        </li>
+        <li>
+          <Link to="/Share">Partage</Link>
+        </li>
+        <li>
+          <Link to="/Avis">Avis</Link>
+        </li>
+        <li>
+          <Link to="/SearchMap">SearchMap</Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
 
 export default Home;
