@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Avis() {
+function Rating() {
   return <div> </div>;
 }
 
-export default Avis;
+export default Rating;
