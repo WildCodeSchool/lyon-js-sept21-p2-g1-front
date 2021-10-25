@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Home() {
+const Navbar = () => {
   return (
-    <div className="bg-red-700">
+    <nav>
       <ul>
         <li>
           <Link exact to="/">
@@ -11,20 +11,23 @@ function Home() {
           </Link>
         </li>
         <li>
-          <Link to="/AboutUs">AbousUs</Link>
+          <Link to="/searchMap">Carte</Link>
         </li>
+
         <li>
-          <Link to="/Share">Partage</Link>
+          <Link to="/share">Partage</Link>
         </li>
+
         <li>
-          <Link to="/Avis">Avis</Link>
+          <Link to="/aboutUs">A propos</Link>
         </li>
+
         <li>
-          <Link to="/SearchMap">SearchMap</Link>
+          <Link to="/rating">Avis</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
-}
+};
 
-export default Home;
+export default Navbar;

@@ -1,8 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const GeoLocation = () => {
-  return <div></div>;
-};
+const GeoLocation = () => {};
 
 export default GeoLocation;
