@@ -4,8 +4,6 @@ import AboutUs from './pages/AboutUs';
 import Rating from './pages/Rating';
 import Home from './pages/Home';
 import Share from './pages/Share';
-import Footer from './components/Footer';
-import Orange from './components/Orange';
 
 function App() {
   return (
@@ -20,11 +18,7 @@ function App() {
           <Route path="/share" component={Share} />
           <Route path="/about" component={AboutUs} />
         </Switch>
-        <Orange />
       </main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 }

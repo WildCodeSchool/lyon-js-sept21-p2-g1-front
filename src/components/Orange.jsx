@@ -1,5 +1,5 @@
 const Orange = () => {
-  return <div className="bg-primary w-full flex-grow-1 h-screen"> </div>;
+  return <div className="bg-primary w-full h-screen"> </div>;
 };
 
 export default Orange;

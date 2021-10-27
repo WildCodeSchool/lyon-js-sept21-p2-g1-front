@@ -1,12 +1,14 @@
 import React from 'react';
 import img from '../assets/parking.png';
+import Orange from '../components/Orange';
+import Footer from '../components/Footer';
 
 function Home() {
   return (
-    <div>
-      <div className="backround__Header">
-        <img className="w-full absolute -z-1 top-0" src={img} alt="parking" />
-      </div>
+    <div className="backround__Header bg-cover w-full absolute -z-1 top-0">
+      <img src={img} alt="parking" />
+      <Orange />
+      <Footer />
     </div>
   );
 }
