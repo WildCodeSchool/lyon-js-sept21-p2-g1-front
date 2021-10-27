@@ -4,6 +4,7 @@ import AboutUs from './pages/AboutUs';
 import Rating from './pages/Rating';
 import Home from './pages/Home';
 import Share from './pages/Share';
+import Api from './components/Api';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" component={AboutUs} />
         </Switch>
       </main>
+      <Api />
     </div>
   );
 }
