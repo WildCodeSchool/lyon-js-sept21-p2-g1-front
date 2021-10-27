@@ -1,11 +1,11 @@
 import React from 'react';
-import LocationSearchModal from '../components/GeoLocation';
+import Geolocation from '../components/GeoLocation';
 
 function Home() {
   return (
     <div className="bg-red-700">
       <h1>Home</h1>
-      <LocationSearchModal />
+      <Geolocation />
     </div>
   );
 }
