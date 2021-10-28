@@ -1,5 +1,7 @@
 import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
 import RatingStar from '../components/RatingStar';
+import Navbar from '../components/Navbar';
+
 import img from '../assets/parking.jpg';
 
 const Rating = () => {
