@@ -5,6 +5,7 @@ import img from '../assets/parking.jpg';
 import Footer from '../components/Footer';
 import CardHome from '../components/CardHome';
 import SecondaryColor from '../components/BackgroundColors';
+import circle from '../assets/circle.svg';
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
           <CardHome name="Parking surveillé" />
         </div>
+        <img src={circle} alt="circle" />
         <div className="visible md:invisible card__partage flex justify-center absolute w-full bottom-10">
           <CardHome name="Stationnement partagés" />
         </div>
