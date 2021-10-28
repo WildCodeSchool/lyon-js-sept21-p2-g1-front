@@ -1,7 +1,12 @@
 import React from 'react';
+import Maps from '../components/Maps';
 
 function SearchMap() {
-  return <div> </div>;
+  return (
+    <div>
+      <Maps />
+    </div>
+  );
 }
 
 export default SearchMap;

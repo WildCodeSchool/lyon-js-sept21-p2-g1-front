@@ -4,6 +4,7 @@ import AboutUs from './pages/AboutUs';
 import Rating from './pages/Rating';
 import Home from './pages/Home';
 import Share from './pages/Share';
+import SearchMap from './pages/SearchMap';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/rating" component={Rating} />
+          <Route path="/searchMap" component={SearchMap} />
           <Route path="/share" component={Share} />
           <Route path="/about" component={AboutUs} />
         </Switch>

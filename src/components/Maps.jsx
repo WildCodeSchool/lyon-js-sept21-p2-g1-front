@@ -19,26 +19,24 @@ import {
 import { formatRelative } from 'date-fns';
 
 import '@reach/combobox/styles.css';
-// import mapStyles from './mapStyles';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  height: '100vh',
-  width: '100vw',
+  height: '500px',
+  width: '80%',
 };
 const options = {
-  //  styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
 };
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 45.764043,
+  lng: 4.835659,
 };
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyAllxS_YzDHgJIGlXJlvYszWVM7OniCyUU',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
@@ -70,20 +68,13 @@ export default function App() {
 
   return (
     <div>
-      <h1>
-        Bears{' '}
-        <span role="img" aria-label="tent">
-          ⛺️
-        </span>
-      </h1>
-
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={13}
         center={center}
         options={options}
         onClick={onMapClick}
