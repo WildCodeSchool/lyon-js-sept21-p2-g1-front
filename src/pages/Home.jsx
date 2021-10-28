@@ -5,7 +5,6 @@ import img from '../assets/parking.jpg';
 import Footer from '../components/Footer';
 import CardHome from '../components/CardHome';
 import SecondaryColor from '../components/BackgroundColors';
-import parking from '../assets/parkingD.png';
 
 function Home() {
   return (
@@ -13,16 +12,13 @@ function Home() {
       <div className="overflow-hidden">
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
           <CardHome name="Parking surveillé" />
-          <CardHome
-            name="Stationnement partagés"
-            className="mb-10 <img src={Logo}/>"
-          />
+          <CardHome name="Stationnement partagés" className="mb-10 " />
         </div>
         <div className="absolute right-10 left-10 top-28">
           <Input fluid icon="search" placeholder="Search..." />
         </div>
         <div className="w-full absolute h-screen -z-1 top-0">
-          <img src={parking} alt="parking" />
+          <img src={img} alt="parking" />
           <SecondaryColor />
           <Footer />
         </div>
