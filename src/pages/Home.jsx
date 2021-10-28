@@ -12,7 +12,9 @@ function Home() {
       <div className="overflow-hidden">
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
           <CardHome name="Parking surveillé" />
-          <CardHome name="Stationnement partagés" className="mb-10 " />
+        </div>
+        <div className="visible md:invisible card__partage flex justify-center absolute w-full bottom-10">
+          <CardHome name="Stationnement partagés" />
         </div>
         <div className="absolute right-10 left-10 top-28">
           <Input fluid icon="search" placeholder="Search..." />
