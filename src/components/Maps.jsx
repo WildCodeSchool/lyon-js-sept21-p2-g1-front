@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from '@react-google-maps/api';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -16,7 +11,7 @@ import {
   ComboboxList,
   ComboboxOption,
 } from '@reach/combobox';
-import { formatRelative } from 'date-fns';
+import '../search.css';
 
 import '@reach/combobox/styles.css';
 
@@ -25,6 +20,11 @@ const mapContainerStyle = {
   height: '500px',
   width: '80%',
 };
+
+// const onLoad = (Marker) => {
+//   console.log('marker: ', Marker);
+// };
+
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
@@ -39,19 +39,6 @@ export default function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
-
-  const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -77,47 +64,13 @@ export default function App() {
         zoom={13}
         center={center}
         options={options}
-        onClick={onMapClick}
         onLoad={onMapLoad}
-      >
-        {markers.map((marker) => (
-          <Marker
-            key={`${marker.lat}-${marker.lng}`}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => {
-              setSelected(marker);
-            }}
-            icon={{
-              url: `/bear.svg`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          />
-        ))}
-
-        {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => {
-              setSelected(null);
-            }}
-          >
-            <div>
-              <h2>
-                <span role="img" aria-label="bear">
-                  🐻
-                </span>{' '}
-                Alert
-              </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
-            </div>
-          </InfoWindow>
-        ) : null}
-      </GoogleMap>
+      />
     </div>
   );
 }
+
+// PARTIE GEOLOCATION
 
 function Locate({ panTo }) {
   return (
@@ -135,11 +88,16 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <img src="/compass.svg" alt="compass" />
+      {/* <Marker position={panTo} /> */}
+      <img
+        src="https://img.icons8.com/ios/50/000000/compass--v2.png"
+        alt="compass"
+      />
     </button>
   );
 }
 
+// PARTIE RECHERCHE
 function Search({ panTo }) {
   const {
     ready,
@@ -173,6 +131,8 @@ function Search({ panTo }) {
     }
   };
 
+  // RECUPERE LES SUGGESTIONS GOOGLE
+
   return (
     <div className="search">
       <Combobox onSelect={handleSelect}>
@@ -180,8 +140,9 @@ function Search({ panTo }) {
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Search your location"
+          placeholder="Ou souhaitez vous trouver une place ? 🚗 "
         />
+
         <ComboboxPopover>
           <ComboboxList>
             {status === 'OK' &&

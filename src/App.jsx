@@ -18,7 +18,7 @@ function App() {
           <Route path="/rating" component={Rating} />
           <Route path="/searchMap" component={SearchMap} />
           <Route path="/share" component={Share} />
-          <Route path="/about" component={AboutUs} />
+          <Route path="/aboutus" component={AboutUs} />
         </Switch>
       </main>
     </div>
