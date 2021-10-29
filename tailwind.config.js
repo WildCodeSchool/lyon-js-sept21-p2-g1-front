@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -18,13 +16,13 @@ module.exports = {
       },
     },
   },
-  // theme: {
-  //     extend: {
-  //         fontFamily: {
-  //             sans: ['Fira Sans', 'sans-serif'],
-  //         },
-  //     },
-  // },
+  font: {
+    variants: {
+      extend: {
+        fontFamily: ['Fira', 'sans'],
+      },
+    },
+  },
   variants: {
     extend: {},
   },
