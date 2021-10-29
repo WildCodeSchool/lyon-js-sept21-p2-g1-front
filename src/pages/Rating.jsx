@@ -1,14 +1,14 @@
 import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
 import RatingStar from '../components/RatingStar';
 
-import img from '../assets/parking.jpg';
+import img from '../assets/undergroundpark.jpg';
 
 const Rating = () => {
   return (
     <div>
       <img className="md:object-center" src={img} alt="parking" />
       <button
-        className="bg-red-600  text-black -mt-56 ml-8 font-bold py-4 px-8 rounded-full"
+        className="bg-yellow-500  text-black -mt-56 ml-8 font-bold py-4 px-8 rounded-full"
         type="button"
       >
         Avis
@@ -38,7 +38,9 @@ const Rating = () => {
           control={Checkbox}
           label="I agree to the Terms and Conditions"
         />
-        <Form.Field control={Button}>Submit</Form.Field>
+        <div className="btn flex shadow-xl justify-end rounded-3xl border-gray-400">
+          <Form.Field control={Button}>Submit</Form.Field>
+        </div>
       </Form>
     </div>
   );
