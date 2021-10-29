@@ -5,9 +5,9 @@ import img from '../assets/parking.jpg';
 import Footer from '../components/Footer';
 import CardHome from '../components/CardHome';
 import SecondaryColor from '../components/BackgroundColors';
-import circle from '../assets/circle.svg';
-import parkingD from '../assets/parkingD.png';
-import parkingS from '../assets/parkingS.png';
+import circle from '../assets/arroww.png';
+import parkingD from '../assets/parkingHomeD.png';
+import parkingS from '../assets/parkingHomeS.png';
 
 function Home() {
   return (
@@ -16,8 +16,19 @@ function Home() {
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
           <CardHome name="Parking surveillé" parking={parkingS} />
         </div>
-        <img src={circle} alt="circle" />
+
         <div className="visible md:invisible card__partage flex justify-center absolute w-full bottom-10">
+          <img
+            className="-my-6 absolute cursor-pointer"
+            src={circle}
+            alt="circle"
+          />
+          <img
+            className="top-96 -my-5 absolute cursor-pointer"
+            src={circle}
+            alt="circle"
+          />
+
           <CardHome name="Stationnement partagés" parking={parkingD} />
         </div>
         <div className="absolute right-10 left-10 top-28">
