@@ -1,74 +1,93 @@
-// // PARTIE RECHERCHE
-// function Search({ panTo }) {
-//   const history = useHistory();
-//   const location = useLocation();
-//   const [address, setAddress] = React.useState();
+import React from 'react';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from 'use-places-autocomplete';
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from '@reach/combobox';
+import '../search.css';
+import qs from 'query-string';
 
-//   const {
-//     ready,
-//     value,
-//     suggestions: { status, data },
-//     setValue,
-//     clearSuggestions,
-//   } = usePlacesAutocomplete({
-//     requestOptions: {
-//       location: { lat: () => 43.6532, lng: () => -79.3832 },
-//       radius: 100 * 1000,
-//     },
-//   });
-//   React.useEffect(() => {
-//     setValue(qs.parse(location.search).search, false);
-//     setAddress(qs.parse(location.search).search);
-//   }, [location]);
+import '@reach/combobox/styles.css';
+import { useLocation, useHistory } from 'react-router-dom';
 
-//   const geocode = async () => {
-//     try {
-//       const results = await getGeocode({ address });
-//       const { lat, lng } = await getLatLng(results[0]);
-//       panTo({ lat, lng });
-//     } catch (error) {
-//       console.log('😱 Error: ', error);
-//     }
-//   };
-//   React.useEffect(() => {
-//     geocode(address);
-//   }, [address]);
-//   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+// PARTIE RECHERCHE
+function Search({ panTo }) {
+  const history = useHistory();
+  const location = useLocation();
+  const [address, setAddress] = React.useState();
 
-//   const handleInput = (e) => {
-//     setValue(e.target.value);
-//   };
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: { lat: () => 43.6532, lng: () => -79.3832 },
+      radius: 100 * 1000,
+    },
+  });
+  React.useEffect(() => {
+    setValue(qs.parse(location.search).search, false);
+    setAddress(qs.parse(location.search).search);
+  }, [location]);
 
-//   const handleSelect = async (addr) => {
-//     setValue(addr, false);
-//     clearSuggestions();
-//     setAddress(addr);
+  const geocode = async () => {
+    try {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      panTo({ lat, lng });
+    } catch (error) {
+      console.log('😱 Error: ', error);
+    }
+  };
+  React.useEffect(() => {
+    geocode(address);
+  }, [address]);
+  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
-//     const searchParam = qs.stringify({ search: addr });
-//     history.push(`/searchMap?${searchParam}`);
-//   };
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
 
-//   // RECUPERE LES SUGGESTIONS GOOGLE
+  const handleSelect = async (addr) => {
+    setValue(addr, false);
+    clearSuggestions();
+    setAddress(addr);
 
-//   return (
-//     <div className="search">
-//       <Combobox onSelect={handleSelect}>
-//         <ComboboxInput
-//           value={value}
-//           onChange={handleInput}
-//           disabled={!ready}
-//           placeholder="Ou souhaitez vous trouver une place ? 🚗 "
-//         />
+    const searchParam = qs.stringify({ search: addr });
+    history.push(`/searchMap?${searchParam}`);
+  };
 
-//         <ComboboxPopover>
-//           <ComboboxList>
-//             {status === 'OK' &&
-//               data.map(({ id, description }) => (
-//                 <ComboboxOption key={id} value={description} />
-//               ))}
-//           </ComboboxList>
-//         </ComboboxPopover>
-//       </Combobox>
-//     </div>
-//   );
-// }
+  // RECUPERE LES SUGGESTIONS GOOGLE
+
+  return (
+    <div className="search">
+      <Combobox onSelect={handleSelect}>
+        <ComboboxInput
+          value={value}
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder="Ou souhaitez vous trouver une place ? 🚗 "
+        />
+
+        <ComboboxPopover>
+          <ComboboxList>
+            {status === 'OK' &&
+              data.map(({ id, description }) => (
+                <ComboboxOption key={id} value={description} />
+              ))}
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
+    </div>
+  );
+}

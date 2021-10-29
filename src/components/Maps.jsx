@@ -100,7 +100,7 @@ function Locate({ panTo }) {
 }
 
 // PARTIE RECHERCHE
-function Search(props, { panTo }) {
+function Search({ panTo }) {
   const history = useHistory();
   const location = useLocation();
   const [address, setAddress] = React.useState();
@@ -128,7 +128,7 @@ function Search(props, { panTo }) {
       const { lat, lng } = await getLatLng(results[0]);
       panTo({ lat, lng });
     } catch (error) {
-      console.log('😱 Error: ', error);
+      // console.log('😱 Error: ', error);
     }
   };
   React.useEffect(() => {
