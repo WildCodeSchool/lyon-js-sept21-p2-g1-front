@@ -12,8 +12,10 @@ import {
   ComboboxOption,
 } from '@reach/combobox';
 import '../search.css';
+import qs from 'query-string';
 
 import '@reach/combobox/styles.css';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -98,7 +100,11 @@ function Locate({ panTo }) {
 }
 
 // PARTIE RECHERCHE
-function Search({ panTo }) {
+function Search(props, { panTo }) {
+  const history = useHistory();
+  const location = useLocation();
+  const [address, setAddress] = React.useState();
+
   const {
     ready,
     value,
@@ -111,17 +117,12 @@ function Search({ panTo }) {
       radius: 100 * 1000,
     },
   });
+  React.useEffect(() => {
+    setValue(qs.parse(location.search).search, false);
+    setAddress(qs.parse(location.search).search);
+  }, [location]);
 
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
-
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleSelect = async (address) => {
-    setValue(address, false);
-    clearSuggestions();
-
+  const geocode = async () => {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
@@ -129,6 +130,23 @@ function Search({ panTo }) {
     } catch (error) {
       console.log('😱 Error: ', error);
     }
+  };
+  React.useEffect(() => {
+    geocode(address);
+  }, [address]);
+  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSelect = async (addr) => {
+    setValue(addr, false);
+    clearSuggestions();
+    setAddress(addr);
+
+    const searchParam = qs.stringify({ search: addr });
+    history.push(`/searchMap?${searchParam}`);
   };
 
   // RECUPERE LES SUGGESTIONS GOOGLE
