@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
 import RatingStar from '../components/RatingStar';
 
-import img from '../assets/undergroundpark.jpg';
+import img from '../assets/parkingRating.jpg';
 
 const Rating = () => {
   return (
@@ -15,9 +15,8 @@ const Rating = () => {
       </button>
       <Form className="md:flex space-y-8 mx-16 justify-center flex-col">
         <p className="text-center justify-center font-semibold">
-          “Tailwind CSS is the only framework that I've seen scale on large
-          teams. It’s easy to customize, adapts to any design, and the build
-          size is tiny.”
+          “Merci de bien vouloir nous donner 5 min. de votre temps pour évaluer
+          l'application.🧐 ”
         </p>
         <Form.Field
           className="shadow-xl rounded-3xl border-gray-400"
