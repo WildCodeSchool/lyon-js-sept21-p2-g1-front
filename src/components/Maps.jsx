@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -16,7 +21,7 @@ import qs from 'query-string';
 
 import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
-import '../maps.css';
+import { Wrapper, Status } from '@googlemaps/react-wrapper';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -32,7 +37,7 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
-const center = {
+const defaultLocation = {
   lat: 45.764043,
   lng: 4.835659,
 };
@@ -42,6 +47,7 @@ export default function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
+  const [markers, setMarkers] = React.useState([]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -66,7 +72,7 @@ export default function App() {
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={13}
-        center={center}
+        center={defaultLocation}
         options={options}
         onLoad={onMapLoad}
       />
@@ -77,6 +83,7 @@ export default function App() {
 // PARTIE GEOLOCATION
 
 function Locate({ panTo }) {
+  const [marker, setMarker] = React.useState([]);
   return (
     <button
       className="btnGeo"
@@ -92,7 +99,6 @@ function Locate({ panTo }) {
         );
       }}
     >
-      {/* <Marker position={panTo} /> */}
       <img
         src="https://img.icons8.com/ios/50/000000/compass--v2.png"
         alt="compass"
@@ -161,7 +167,7 @@ function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="flex border-2 border-primary h-12 rounded-md focus:outline-none text-black text-lg w-full mx-4 items-center"
+            className="flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg w-full mx-4 items-center text-center"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>
