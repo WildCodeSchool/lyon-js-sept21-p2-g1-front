@@ -21,7 +21,6 @@ import qs from 'query-string';
 
 import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -37,6 +36,7 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
+
 const defaultLocation = {
   lat: 45.764043,
   lng: 4.835659,
@@ -66,7 +66,6 @@ export default function App() {
     <div>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
-
       <GoogleMap
         className="flex justify-center w-full"
         id="map"
@@ -75,7 +74,9 @@ export default function App() {
         center={defaultLocation}
         options={options}
         onLoad={onMapLoad}
-      />
+      >
+        <Marker position={localisation} />
+      </GoogleMap>
     </div>
   );
 }
@@ -84,16 +85,24 @@ export default function App() {
 
 function Locate({ panTo }) {
   const [marker, setMarker] = React.useState([]);
+
   return (
     <button
       className="btnGeo"
       onClick={() => {
+        const [localisation, setLocalisation] = useState({ defaultLocation });
+
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            console.log('position : ', position);
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             });
+            setLocalisation([
+              position.coords.latitude,
+              position.coords.longitude,
+            ]);
           },
           () => null
         );
