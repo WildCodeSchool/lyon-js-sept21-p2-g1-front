@@ -6,7 +6,10 @@ import img4 from '../assets/Cat4.png';
 
 const AboutUs = () => {
   return (
-    <div className="grid overflow-hidden grid-lines grid-cols-8 grid-rows-2 gap-6">
+    <div
+      className="grid overflow-hidden grid-lines grid-cols-4 grid-rows-2 gap-8 sm:grid-cols-8 text-sm
+    md:text-md lg:text-lg xl:text-xl"
+    >
       <div className="box">
         <img src={img1} alt="Kalil" />{' '}
       </div>
