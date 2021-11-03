@@ -5,6 +5,7 @@ function SearchMap() {
   return (
     <div>
       <Maps />
+      <p className="text-center m-4"> Made with Google Maps API</p>
     </div>
   );
 }

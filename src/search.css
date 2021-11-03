@@ -1,15 +1,13 @@
-.search {
+/* .search {
   position: absolute;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 500px;
   z-index: 10;
   height: 40px;
   border: 1px solid black;
   border-radius: 5px;
-}
+} */
 
 .search input {
   padding: 0.5rem;

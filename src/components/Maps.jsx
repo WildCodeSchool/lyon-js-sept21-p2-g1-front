@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
@@ -16,11 +16,12 @@ import qs from 'query-string';
 
 import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
+import '../maps.css';
 
 const libraries = ['places'];
 const mapContainerStyle = {
   height: '500px',
-  width: '80%',
+  // width: '80%',
 };
 
 // const onLoad = (Marker) => {
@@ -61,6 +62,7 @@ export default function App() {
       <Search panTo={panTo} />
 
       <GoogleMap
+        className="flex justify-center w-full"
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={13}
@@ -77,7 +79,7 @@ export default function App() {
 function Locate({ panTo }) {
   return (
     <button
-      className="locate"
+      className="btnGeo"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -152,15 +154,17 @@ function Search({ panTo }) {
   // RECUPERE LES SUGGESTIONS GOOGLE
 
   return (
-    <div className="search">
+    <div>
       <Combobox onSelect={handleSelect}>
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Ou souhaitez vous trouver une place ? 🚗 "
-        />
-
+        <div className="flex items-center justify-center my-10">
+          <ComboboxInput
+            value={value}
+            onChange={handleInput}
+            disabled={!ready}
+            className="flex border-2 border-primary h-12 rounded-md focus:outline-none text-black text-lg w-full mx-4 items-center"
+            placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
+          />
+        </div>
         <ComboboxPopover>
           <ComboboxList>
             {status === 'OK' &&
