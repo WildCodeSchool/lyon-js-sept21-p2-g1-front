@@ -8,7 +8,7 @@ import Share from './pages/Share';
 function App() {
   return (
     <div>
-      <header className="flex flex-col h-screen">
+      <header>
         <Navbar />
       </header>
       <main>
@@ -19,6 +19,7 @@ function App() {
           <Route path="/aboutUs" component={AboutUs} />
         </Switch>
       </main>
+      <footer> </footer>
     </div>
   );
 }

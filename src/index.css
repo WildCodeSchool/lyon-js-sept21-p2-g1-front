@@ -6,3 +6,9 @@ li a {
     color: white;
     font-weight: bold;
 }
+
+.phone {
+    top: 950px;
+    left: 50%;
+    transform: translateX(-50%);
+}
