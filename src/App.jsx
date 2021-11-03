@@ -16,9 +16,10 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/rating" component={Rating} />
           <Route path="/share" component={Share} />
-          <Route path="/about" component={AboutUs} />
+          <Route path="/aboutUs" component={AboutUs} />
         </Switch>
       </main>
+      <footer> </footer>
     </div>
   );
 }
