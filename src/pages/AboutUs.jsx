@@ -11,9 +11,29 @@ const AboutUs = () => {
     md:text-md lg:text-lg xl:text-xl"
     >
       <div className="box">
-        <img src={img1} alt="Kalil" />{' '}
+        <img
+          className="rounded-full shadow ring-yellow-400"
+          src={img1}
+          alt="Kalil"
+        />{' '}
       </div>
-      <div className="box col-span-3 m-auto">
+      <div className="box col-span-3 m-auto shadow ring-yellow-400">
+        <p>
+          Cat ipsum dolor sit amet, sit in window and stare oooh, a bird, yum
+          yet scratch the furniture, yet jump on counter removed by human jump
+          on counter again removed by human meow before jumping on counter this
+          time to let the human know am coming back but rub my belly hiss.
+        </p>
+      </div>
+
+      <div className="box">
+        <img
+          className="rounded-full shadow ring-yellow-400"
+          src={img2}
+          alt="Florence"
+        />
+      </div>
+      <div className="box col-span-3 m-auto shadow ring-yellow-400">
         <p>
           Cat ipsum dolor sit amet, sit in window and stare oooh, a bird, yum
           yet scratch the furniture, yet jump on counter removed by human jump
@@ -22,9 +42,13 @@ const AboutUs = () => {
         </p>
       </div>
       <div className="box">
-        <img src={img2} alt="Florence" />
+        <img
+          className="rounded-full shadow ring-yellow-400"
+          src={img3}
+          alt="Bastien"
+        />
       </div>
-      <div className="box col-span-3 m-auto">
+      <div className="box col-span-3 m-auto shadow ring-yellow-400">
         <p>
           Cat ipsum dolor sit amet, sit in window and stare oooh, a bird, yum
           yet scratch the furniture, yet jump on counter removed by human jump
@@ -33,20 +57,13 @@ const AboutUs = () => {
         </p>
       </div>
       <div className="box">
-        <img src={img3} alt="Bastien" />
+        <img
+          className="rounded-full shadow ring-yellow-400"
+          src={img4}
+          alt="Selena"
+        />
       </div>
-      <div className="box col-span-3 m-auto">
-        <p>
-          Cat ipsum dolor sit amet, sit in window and stare oooh, a bird, yum
-          yet scratch the furniture, yet jump on counter removed by human jump
-          on counter again removed by human meow before jumping on counter this
-          time to let the human know am coming back but rub my belly hiss.
-        </p>
-      </div>
-      <div className="box">
-        <img src={img4} alt="Selena" />
-      </div>
-      <div className="box col-span-3 m-auto">
+      <div className="box col-span-3 m-auto shadow ring-yellow-400">
         <p>
           Cat ipsum dolor sit amet, sit in window and stare oooh, a bird, yum
           yet scratch the furniture, yet jump on counter removed by human jump
