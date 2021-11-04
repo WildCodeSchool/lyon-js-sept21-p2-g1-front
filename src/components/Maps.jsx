@@ -102,14 +102,21 @@ export default function Maps() {
 // PARTIE GEOLOCATION
 
 function Locate({ panTo, setLocalisation }) {
+  // ANIMATION BTN
+  const [isActiveBtn, setActiveBtn] = useState('true');
+  const handleToggle = () => {
+    setActiveBtn(!isActiveBtn);
+  };
+
   const [marker, setMarker] = React.useState([]);
 
   return (
     <button
-      className="btnGeo"
+      className="btn"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            console.log('position : ', position);
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
@@ -125,6 +132,8 @@ function Locate({ panTo, setLocalisation }) {
       }}
     >
       <img
+        onClick={handleToggle}
+        className={isActiveBtn ? null : 'animBtn'}
         src="https://img.icons8.com/ios/50/000000/compass--v2.png"
         alt="compass"
       />
@@ -185,9 +194,9 @@ function Search({ panTo }) {
   // RECUPERE LES SUGGESTIONS GOOGLE
 
   return (
-    <div>
+    <div className="inputBox">
       <Combobox onSelect={handleSelect}>
-        <div className="flex items-center justify-center my-10">
+        <div className="flex items-center justify-center my-10 ">
           <ComboboxInput
             value={value}
             onChange={handleInput}
