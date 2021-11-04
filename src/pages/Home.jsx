@@ -1,12 +1,13 @@
 // import React, { useState, useEffect } from 'react';
 import img from '../assets/parking.jpg';
 import CardHome from '../components/CardHome';
-import circle from '../assets/arroww.png';
+// import circle from '../assets/arroww.png';
 import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
 import phoneImg from '../assets/phone.png';
 import Search from '../components/Search';
+import ModalNew from '../components/ModalNew';
 
 function Home() {
   // const [searchInput, setSearchInput] = useState('');
@@ -20,8 +21,11 @@ function Home() {
   return (
     <>
       <div className="overflow-hidden">
-        <div className="mx-20 mt-44">
+        <div className="mx-20 mt-16">
           <Search />
+        </div>
+        <div className="modal">
+          <p>sqfsqf</p>
         </div>
         <div className="w-full absolute h-screen -z-1 top-0">
           <img src={img} alt="parking" />
@@ -37,20 +41,24 @@ function Home() {
           <CardHome name="Parking surveillé" parking={parkingS} />
         </div>
         <div className="visible md:invisible card__partage flex justify-center absolute w-full -bottom-48 shadow-2xl">
-          <img
+          <ModalNew imgClass="-my-6 absolute cursor-pointer" />
+          {/* <img
             className="-my-6 absolute cursor-pointer"
             src={circle}
             alt="circle"
-          />
-          <img
+          /> */}
+          <div className="top-96 -my-5 absolute cursor-pointer bg">
+            <ModalNew name="jhljhlhlhlhih" />
+          </div>
+
+          {/* <img
             className="top-96 -my-5 absolute cursor-pointer"
             src={circle}
             alt="circle"
-          />
+          /> */}
 
           <CardHome name="Stationnement partagés" parking={parkingD} />
         </div>
-
         <div className="absolute right-10 left-10 top-28">
           {/* <form
             onSubmit={(e) => {
