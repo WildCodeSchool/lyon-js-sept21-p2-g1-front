@@ -42,6 +42,8 @@ const defaultLocation = {
   lng: 4.835659,
 };
 
+const defaultText = '<p>Hello World</p>';
+
 export default function Maps() {
   const [localisation, setLocalisation] = useState({ defaultLocation });
 
@@ -50,6 +52,7 @@ export default function Maps() {
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
+  const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -77,7 +80,20 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
-        <Marker position={localisation} />
+        <Marker
+          key={`${localisation}`}
+          position={localisation}
+          icon={{
+            url: `carUser.png`,
+          }}
+          onClick={() => setSelected(localisation)}
+        />
+
+        {selected ? (
+          <InfoWindow position={localisation}>
+            <p> Vous cherchez une place dans le quartier ?</p>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </div>
   );
@@ -94,7 +110,6 @@ function Locate({ panTo, setLocalisation }) {
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log('position : ', position);
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
