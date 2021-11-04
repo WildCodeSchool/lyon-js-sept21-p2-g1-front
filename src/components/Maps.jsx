@@ -42,7 +42,9 @@ const defaultLocation = {
   lng: 4.835659,
 };
 
-export default function App() {
+export default function Maps() {
+  const [localisation, setLocalisation] = useState({ defaultLocation });
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -64,7 +66,7 @@ export default function App() {
 
   return (
     <div>
-      <Locate panTo={panTo} />
+      <Locate setLocalisation={setLocalisation} panTo={panTo} />
       <Search panTo={panTo} />
       <GoogleMap
         className="flex justify-center w-full"
@@ -83,15 +85,13 @@ export default function App() {
 
 // PARTIE GEOLOCATION
 
-function Locate({ panTo }) {
+function Locate({ panTo, setLocalisation }) {
   const [marker, setMarker] = React.useState([]);
 
   return (
     <button
       className="btnGeo"
       onClick={() => {
-        const [localisation, setLocalisation] = useState({ defaultLocation });
-
         navigator.geolocation.getCurrentPosition(
           (position) => {
             console.log('position : ', position);
@@ -99,10 +99,11 @@ function Locate({ panTo }) {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             });
-            setLocalisation([
-              position.coords.latitude,
-              position.coords.longitude,
-            ]);
+            setLocalisation({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+            console.log(setLocalisation);
           },
           () => null
         );
