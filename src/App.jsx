@@ -4,11 +4,12 @@ import AboutUs from './pages/AboutUs';
 import Rating from './pages/Rating';
 import Home from './pages/Home';
 import Share from './pages/Share';
+import Map from './pages/Map';
 
 function App() {
   return (
     <div>
-      <header>
+      <header className="bg-black">
         <Navbar />
       </header>
       <main>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/rating" component={Rating} />
           <Route path="/share" component={Share} />
           <Route path="/aboutUs" component={AboutUs} />
+          <Route path="/map" component={Map} />
         </Switch>
       </main>
       <footer> </footer>
