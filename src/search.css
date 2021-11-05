@@ -8,6 +8,15 @@
   -webkit-animation: rotate 3s normal linear;
 }
 
+.parking-marker {
+  background: none;
+  border: none;
+}
+
+.parking-marker img {
+  width: 25px;
+}
+
 @keyframes rotate {
   0% {
     -webkit-transform: rotate3d(0, 0, 1, 0deg);
