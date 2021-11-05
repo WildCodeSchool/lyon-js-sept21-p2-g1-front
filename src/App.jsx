@@ -18,9 +18,10 @@ function App() {
           <Route path="/rating" component={Rating} />
           <Route path="/searchMap" component={SearchMap} />
           <Route path="/share" component={Share} />
-          <Route path="/aboutus" component={AboutUs} />
+          <Route path="/aboutUs" component={AboutUs} />
         </Switch>
       </main>
+      <footer> </footer>
     </div>
   );
 }
