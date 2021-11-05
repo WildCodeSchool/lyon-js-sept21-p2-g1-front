@@ -7,7 +7,7 @@ import img4 from '../assets/Cat3.jpg';
 const AboutUs = () => {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-      <div className="bg-gray-50">
+      <div className="bg-gray-100">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
             <div className="w-full md:w-2/5 h-80">
