@@ -39,8 +39,6 @@ const Rating = () => {
             control={Checkbox}
             label="I agree to the Terms and Conditions"
           />
-        </div>
-        <div className="flex my-8 px-5 md:px-5 rounded-3xl border-gray-400 flex-grow-0 w-11/12">
           <Form.Field control={Button}>Submit</Form.Field>
         </div>
       </Form>
