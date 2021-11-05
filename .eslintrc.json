@@ -32,7 +32,6 @@
     "no-use-before-define": "off",
     "no-param-reassign": "off",
     "no-unused-vars": "off"
-
   },
   "parser": "babel-eslint"
 }
