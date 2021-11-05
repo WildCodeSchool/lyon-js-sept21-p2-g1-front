@@ -6,8 +6,9 @@ import img from '../assets/parkingRating.jpg';
 const Rating = () => {
   return (
     <div>
-      <img className="bg-cover bg-center" src={img} alt="parking" />
-
+      <div className="lg:h-40">
+        <img className="object-cover h-48 w-full" src={img} alt="parking" />
+      </div>
       <button
         className="bg-yellow-500  text-black -mt-56 ml-8 font-bold py-4 px-8 rounded-full"
         type="button"
@@ -38,8 +39,6 @@ const Rating = () => {
             control={Checkbox}
             label="I agree to the Terms and Conditions"
           />
-        </div>
-        <div className="flex my-8 px-5 md:px-5 rounded-3xl border-gray-400 flex-grow-0 w-11/12">
           <Form.Field control={Button}>Submit</Form.Field>
         </div>
       </Form>
