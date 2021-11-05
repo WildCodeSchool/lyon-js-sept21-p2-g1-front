@@ -24,6 +24,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 
 import useSwr from 'swr';
 import useSupercluster from 'use-supercluster';
+import { RiParkingBoxFill } from 'react-icons/ri';
 import img from '../assets/iconCar.png';
 
 const libraries = ['places'];
@@ -110,7 +111,15 @@ export default function Maps() {
           parkings.map((parking) => {
             const Parklocation = { lat: parking.lat, lng: parking.lon };
             return (
-              <Marker key={parking.idparking} position={Parklocation}>
+              <Marker
+                className="parking-marker"
+                key={parking.idparking}
+                position={Parklocation}
+                icon={{
+                  url: `car-park.png`,
+                }}
+              >
+                <RiParkingBoxFill size="30px" color="red" />
                 <button className="parking-marker">
                   <img className="imgParking" src={img} alt="img" />
                 </button>
