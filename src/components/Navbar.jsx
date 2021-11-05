@@ -22,6 +22,9 @@ const Navbar = () => {
           <li>
             <Link to="/rating">Avis</Link>
           </li>
+          <li>
+            <Link to="/map">Carte</Link>
+          </li>
         </ul>
       </nav>
     </div>

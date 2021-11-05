@@ -126,20 +126,20 @@ export default function Maps() {
               </Marker>
             );
           })
-          /* <Marker
-          key={`${localisation}`}
-          position={localisation}
-          icon={{
-            url: `carUser.png`,
-          }}
-          onClick={() => setSelected(localisation)}
-          />
-          
-          {selected ? (
-            <InfoWindow position={localisation}>
-            <p> Vous cherchez une place dans le quartier ?</p>
-            </InfoWindow>
-          ) : null} */
+          // <Marker
+          // // key={${localisation}}
+          // position={localisation}
+          // icon={{
+          //   url: `carUser.png`,
+          // }}
+          // onClick={() => setSelected(localisation)}
+          // />
+
+          // {selected ? (
+          //   <InfoWindow position={localisation}>
+          //   <p> Vous cherchez une place dans le quartier ?</p>
+          //   </InfoWindow>
+          // ) : null}
         }
       </GoogleMap>
     </div>
@@ -235,7 +235,7 @@ function Search({ panTo }) {
     setAddress(addr);
 
     const searchParam = qs.stringify({ search: addr });
-    history.push(`/searchMap?${searchParam}`);
+    history.push(`/map?${searchParam}`);
   };
 
   // RECUPERE LES SUGGESTIONS GOOGLE
