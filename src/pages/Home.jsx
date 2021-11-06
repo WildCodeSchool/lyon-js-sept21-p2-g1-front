@@ -37,27 +37,21 @@ function Home() {
         <div className="phone absolute">
           <img src={phoneImg} alt={phoneImg} />
         </div>
-        <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
-          <CardHome name="Parking surveillé" parking={parkingS} />
-        </div>
-        <div className="visible md:invisible card__partage flex justify-center absolute w-full -bottom-48 shadow-2xl">
-          <ModalNew imgClass="-my-6 absolute cursor-pointer" />
-          {/* <img
-            className="-my-6 absolute cursor-pointer"
-            src={circle}
-            alt="circle"
-          /> */}
-          <div className="top-96 -my-5 absolute cursor-pointer bg">
-            <ModalNew name="jhljhlhlhlhih" />
+        <div className="modal__info ">
+          <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 bottom-8 absolute">
+            <CardHome name="Parking surveillé" parking={parkingS} />
           </div>
-
-          {/* <img
-            className="top-96 -my-5 absolute cursor-pointer"
-            src={circle}
-            alt="circle"
-          /> */}
-
-          <CardHome name="Stationnement partagés" parking={parkingD} />
+          <div className="visible md:invisible card__partage flex justify-center absolute w-full -bottom-48 shadow-2xl">
+            <ModalNew
+              imgClass="-my-6 absolute cursor-pointer"
+              name="fdsdfsdfsf"
+              names="qsdsds"
+            />
+            <div className="top-96 -my-5 absolute cursor-pointer bg">
+              <ModalNew name="jhljhlhlhlhih" names="names" />
+            </div>
+            <CardHome name="Stationnement partagés" parking={parkingD} />
+          </div>
         </div>
         <div className="absolute right-10 left-10 top-28">
           {/* <form
@@ -65,12 +59,12 @@ function Home() {
               e.preventDefault();
               setValidateSearch(searchInput);
             }}
-          >
+            >
             <Input
-              fluid
-              icon="search"
-              placeholder="Search..."
-              onChange={(e) => setSearchInput(e.target.value)}
+            fluid
+            icon="search"
+            placeholder="Search..."
+            onChange={(e) => setSearchInput(e.target.value)}
             />
           </form> */}
         </div>
