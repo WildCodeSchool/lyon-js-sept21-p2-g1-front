@@ -1,7 +1,5 @@
-// import React, { useState, useEffect } from 'react';
 import img from '../assets/parking.jpg';
 import CardHome from '../components/CardHome';
-// import circle from '../assets/arroww.png';
 import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
@@ -10,14 +8,6 @@ import Search from '../components/Search';
 import ModalNew from '../components/ModalNew';
 
 function Home() {
-  // const [searchInput, setSearchInput] = useState('');
-  // const [validateSearch, setValidateSearch] = useState('');
-  // const [open, setOpen] = useState(false);
-
-  // useEffect(() => {
-  //   return () => {};
-  // }, []);
-
   return (
     <>
       <div className="overflow-hidden">
@@ -52,21 +42,6 @@ function Home() {
             </div>
             <CardHome name="Stationnement partagés" parking={parkingD} />
           </div>
-        </div>
-        <div className="absolute right-10 left-10 top-28">
-          {/* <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setValidateSearch(searchInput);
-            }}
-            >
-            <Input
-            fluid
-            icon="search"
-            placeholder="Search..."
-            onChange={(e) => setSearchInput(e.target.value)}
-            />
-          </form> */}
         </div>
       </div>
     </>
