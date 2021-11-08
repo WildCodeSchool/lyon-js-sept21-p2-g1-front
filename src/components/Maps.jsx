@@ -120,17 +120,28 @@ export default function Maps(props) {
                   url: `car-park.png`,
                 }}
               />
-              <InfoWindow key={parking.idparking} position={Parklocation}>
-                <>
-                  <h4> {parking.nom} </h4>
-                  <p> Adresse : {(parking.commune, parking.voieentree)} </p>
-                  <p> 24/7 : {parking.fermeture} </p>
-                  <p> Tarif : {parking.reglementation} </p>
-                  <p> Capacité -2m : {parking.gabarit} </p>
-                  <p> Capacité PMR : {parking.capacitepmr} </p>
-                  <p> Capacité : {parking.capacite} </p>
-                </>
-              </InfoWindow>
+              {selected ? (
+                <InfoWindow key={parking.idparking} position={Parklocation}>
+                  <>
+                    <h4> {parking.nom} </h4>
+                    <p> Adresse : {(parking.commune, parking.voieentree)} </p>
+                    <p> 24/7 : {parking.fermeture} </p>
+                    <p> Tarif : {parking.reglementation} </p>
+                    <p> Capacité -2m : {parking.gabarit} </p>
+                    <p> Capacité PMR : {parking.capacitepmr} </p>
+                    <p> Capacité : {parking.capacite} </p>
+                  </>
+                </InfoWindow>
+              ) : null}
+
+              <Marker
+                key={`${localisation}`}
+                position={localisation}
+                icon={{
+                  url: `carUser.png`,
+                }}
+                onClick={() => setSelected(localisation)}
+              />
             </>
           );
         })}
