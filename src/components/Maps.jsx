@@ -23,7 +23,7 @@ import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useSwr from 'swr';
-import useSupercluster from 'use-supercluster';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { RiParkingBoxFill } from 'react-icons/ri';
 import img from '../assets/iconCar.png';
 
@@ -50,7 +50,7 @@ const defaultLocation = {
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 const MarkerPark = ({ children }) => children;
 
-export default function Maps() {
+export default function Maps(props) {
   const [localisation, setLocalisation] = useState({ defaultLocation });
   const [zoomIn, setZoomIn] = useState(13);
   const [bounds, setBounds] = useState(null);
@@ -60,7 +60,7 @@ export default function Maps() {
     libraries,
   });
   // const [markers, setMarkers] = React.useState([]);
-  // const [selected, setSelected] = React.useState(null);
+  const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -73,7 +73,7 @@ export default function Maps() {
   }, []);
 
   const url =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1100&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=20&start=1';
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
@@ -107,40 +107,33 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
-        {
-          parkings.map((parking) => {
-            const Parklocation = { lat: parking.lat, lng: parking.lon };
-            return (
+        {parkings.map((parking) => {
+          const Parklocation = { lat: parking.lat, lng: parking.lon };
+          return (
+            <>
               <Marker
                 className="parking-marker"
                 key={parking.idparking}
                 position={Parklocation}
+                onClick={() => setSelected(parking)}
                 icon={{
                   url: `car-park.png`,
                 }}
-              >
-                <RiParkingBoxFill size="30px" color="red" />
-                <button className="parking-marker">
-                  <img className="imgParking" src={img} alt="img" />
-                </button>
-              </Marker>
-            );
-          })
-          // <Marker
-          // // key={${localisation}}
-          // position={localisation}
-          // icon={{
-          //   url: `carUser.png`,
-          // }}
-          // onClick={() => setSelected(localisation)}
-          // />
-
-          // {selected ? (
-          //   <InfoWindow position={localisation}>
-          //   <p> Vous cherchez une place dans le quartier ?</p>
-          //   </InfoWindow>
-          // ) : null}
-        }
+              />
+              <InfoWindow key={parking.idparking} position={Parklocation}>
+                <>
+                  <h4> {parking.nom} </h4>
+                  <p> Adresse : {(parking.commune, parking.voieentree)} </p>
+                  <p> 24/7 : {parking.fermeture} </p>
+                  <p> Tarif : {parking.reglementation} </p>
+                  <p> Capacité -2m : {parking.gabarit} </p>
+                  <p> Capacité PMR : {parking.capacitepmr} </p>
+                  <p> Capacité : {parking.capacite} </p>
+                </>
+              </InfoWindow>
+            </>
+          );
+        })}
       </GoogleMap>
     </div>
   );
