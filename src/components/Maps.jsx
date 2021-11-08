@@ -189,7 +189,7 @@ function Locate({ panTo, setLocalisation }) {
 }
 
 // PARTIE RECHERCHE
-function Search({ panTo }) {
+export function Search({ panTo }) {
   const history = useHistory();
   const location = useLocation();
   const [address, setAddress] = React.useState();
@@ -215,7 +215,7 @@ function Search({ panTo }) {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
-      panTo({ lat, lng });
+      if (panTo) panTo({ lat, lng });
     } catch (error) {
       // console.log('😱 Error: ', error);
     }
@@ -223,6 +223,7 @@ function Search({ panTo }) {
   React.useEffect(() => {
     geocode(address);
   }, [address]);
+
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
   const handleInput = (e) => {
