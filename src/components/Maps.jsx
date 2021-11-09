@@ -33,10 +33,6 @@ const mapContainerStyle = {
   // width: '80%',
 };
 
-// const onLoad = (Marker) => {
-//   console.log('marker: ', Marker);
-// };
-
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
@@ -60,7 +56,7 @@ export default function Maps(props) {
     libraries,
   });
   // const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+  const [selected, setSelected] = React.useState(false);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -77,18 +73,18 @@ export default function Maps(props) {
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
-  const points = parkings.map((parking) => ({
-    type: 'Feature',
-    properties: {
-      cluster: false,
-      parkingId: parking.idparking,
-      proprietaire: parking.proprietaire,
-    },
-    geometry: {
-      type: 'Point',
-      coordinates: [parseFloat(parking.lat), parseFloat(parking.lon)],
-    },
-  }));
+  // const points = parkings.map((parking) => ({
+  //   type: 'Feature',
+  //   properties: {
+  //     cluster: false,
+  //     parkingId: parking.idparking,
+  //     proprietaire: parking.proprietaire,
+  //   },
+  //   geometry: {
+  //     type: 'Point',
+  //     coordinates: [parseFloat(parking.lat), parseFloat(parking.lon)],
+  //   },
+  // }));
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
@@ -109,39 +105,98 @@ export default function Maps(props) {
       >
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
+          const handi = parking.capacitepmr;
+          const height = parking.gabarit;
+          const carShare = parking.capaciteautopartage;
           return (
             <>
               <Marker
                 className="parking-marker"
-                key={parking.idparking}
+                key={parking.gid}
                 position={Parklocation}
-                onClick={() => setSelected(parking)}
+                onClick={() => setSelected(parking.idparking)}
                 icon={{
                   url: `car-park.png`,
                 }}
               />
-              {selected ? (
-                <InfoWindow key={parking.idparking} position={Parklocation}>
+              {selected === parking.idparking ? (
+                <InfoWindow
+                  key={parking.gid}
+                  position={Parklocation}
+                  disableAutoPan="true"
+                >
                   <>
-                    <h4> {parking.nom} </h4>
-                    <p> Adresse : {(parking.commune, parking.voieentree)} </p>
-                    <p> 24/7 : {parking.fermeture} </p>
-                    <p> Tarif : {parking.reglementation} </p>
-                    <p> Capacité -2m : {parking.gabarit} </p>
-                    <p> Capacité PMR : {parking.capacitepmr} </p>
-                    <p> Capacité : {parking.capacite} </p>
+                    <h4 className="text-yellow-500"> {parking.nom} </h4>
+                    <p className="italic"> {parking.voieentree}</p>
+                    <p className="italic"> {parking.commune} </p>
+
+                    <div className="flex p-2">
+                      <img
+                        src="iconParking.png"
+                        alt="icon Price"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.capacite} places </p>
+                    </div>
+
+                    <div className="flex p-2">
+                      <img
+                        src="iconOpen.png"
+                        alt="icon Open Hours"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.fermeture} </p>
+                    </div>
+
+                    <div className="flex p-2">
+                      <img
+                        src="iconPrice.png"
+                        alt="icon Price"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.reglementation} </p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <>
+                        {handi > 0 ? (
+                          <img
+                            src="iconHandi.png"
+                            alt=""
+                            className="w-10 m-2 "
+                          />
+                        ) : null}
+                      </>
+                      <>
+                        {height === null ? null : (
+                          <img
+                            src="iconHeight.png"
+                            alt=""
+                            className="w-10 m-2"
+                          />
+                        )}
+                      </>
+                      <>
+                        {carShare > 0 ? null : (
+                          <img
+                            src="iconCarShare.png"
+                            alt=""
+                            className="w-10 m-2"
+                          />
+                        )}
+                      </>
+                    </div>
                   </>
                 </InfoWindow>
               ) : null}
-
-              <Marker
+              {/* <Marker
                 key={`${localisation}`}
                 position={localisation}
                 icon={{
                   url: `carUser.png`,
                 }}
                 onClick={() => setSelected(localisation)}
-              />
+              /> */}
             </>
           );
         })}
