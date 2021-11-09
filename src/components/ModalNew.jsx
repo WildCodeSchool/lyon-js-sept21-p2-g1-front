@@ -2,7 +2,7 @@
 import React from 'react';
 import circle from '../assets/arroww.png';
 
-const ModalNew = ({ imgClass, name, names }) => {
+const ModalNew = ({ imgClass, name, names, car, car1, car2, infos }) => {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -21,15 +21,29 @@ const ModalNew = ({ imgClass, name, names }) => {
               {/* content */}
               <div className="rounded-lg shadow-lg relative flex flex-col bg-primary outline-none focus:outline-none">
                 <div className="">
-                  <div className="box__infos flex flex-col items-center justify-center">
-                    <div className="test mt-4 flex items-center">
+                  <div className="box__infos flex flex-col justify-center">
+                    <div className="test mt-4 flex items-center justify-center flex-col">
                       <p className="rounded-full text-center w-48 h-8 bg-gray-200   ">
                         {name}
                       </p>
+                      <p className="text-center rounded-full w-48 h-8 bg-gray-200 mt-12 ">
+                        {names}
+                      </p>
                     </div>
-                    <p className="text-center rounded-full w-48 h-8 bg-gray-200 mt-12 ">
-                      {names}
-                    </p>
+                    <div className="infos flex ml-10 flex-col">
+                      <div className="img flex">
+                        <img src={car} alt="car" />
+                      </div>
+                      <div className="img flex">
+                        <img src={car1} alt="car" />
+                      </div>
+                      <div className="img flex">
+                        <img src={car2} alt="car" />
+                      </div>
+                      <div className="infos flex items-center justify-center mx-auto">
+                        <p className="text-xl font-bold">{infos}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {/* body */}

@@ -3,12 +3,6 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 li a {
-  color: white;
-  font-weight: bold;
-}
-
-.phone {
-  top: 950px;
-  left: 50%;
-  transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
 }
