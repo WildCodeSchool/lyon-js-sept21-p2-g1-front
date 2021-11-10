@@ -47,7 +47,7 @@ function Home() {
         </div>
         {/* CardCity */}
         <article className="">
-          <div className="cardCity flex justify-around items-center flex-col lg:flex-row">
+          <div className="cardCity flex justify-around items-center flex-col lg:flex-row mt-64">
             <CardCity img={pardieu} nom="Lyon Part Dieu" quantity="875" />
             <CardCity img={perrache} nom="Lyon Perrache" quantity="1300" />
             <CardCity img={aeroport} nom="Aeroport St Exupery" quantity="234" />
