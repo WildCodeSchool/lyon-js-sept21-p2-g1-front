@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { text, textarea } from 'express';
-import { Button, Checkbox, Form, text, textarea } from 'semantic-ui-react';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 import RatingStar from '../components/RatingStar';
 
 import img from '../assets/parkingRating.jpg';
@@ -13,10 +12,11 @@ function ApiRating() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     axios
-      .post('http://localhost:5000/users', {
+      .post('http://localhost:5001/users', {
         name: newUserName,
-        message: newUserMessage
+        message: newUserMessage,
       })
       .then((resp) => {
         updateUserList([...userList, resp.data]);
@@ -31,7 +31,7 @@ function ApiRating() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/users').then((response) => {
+    axios.get('http://localhost:5001/users').then((response) => {
       updateUserList(response.data);
     });
   }, []);
@@ -61,7 +61,7 @@ function ApiRating() {
           <label htmlFor="add-name">
             Nom:{' '}
             <input
-              control={text}
+              control={Text}
               placeholder="Your name..."
               type="text"
               id="add-name"
@@ -84,7 +84,6 @@ function ApiRating() {
             Message:{' '}
             <input
               className="flex m-8 w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12"
-              control={textarea}
               placeholder="Tell us more about us..."
               type="textarea"
               id="add-message"
