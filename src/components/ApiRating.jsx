@@ -19,8 +19,8 @@ const ApiRating = () => {
           data.values.map((datas) => {
             return (
               <div className="table-auto flex justify-center">
-                <li> Année : {datas.name}</li>;
-                <li> Coordonnées : {datas.message}</li>;
+                <li> Name : {datas.name}</li>;
+                <li> Message : {datas.message}</li>;
               </div>
             );
           })}
