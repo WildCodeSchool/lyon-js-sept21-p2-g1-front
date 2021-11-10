@@ -64,7 +64,7 @@ export default function Maps() {
   }, []);
 
   const url =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=20&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
@@ -217,7 +217,7 @@ function Locate({ panTo, setLocalisation }) {
         );
       }}
     >
-      <div className=" relative ml-8 mt-4">
+      <div className="absolute ml-8 pt-30 pl-20">
         <img
           onClick={handleToggle}
           className={isActiveBtn ? null : 'animBtn'}
@@ -285,7 +285,7 @@ export function Search({ panTo }) {
   return (
     <div className="inputBox">
       <Combobox onSelect={handleSelect}>
-        <div className="flex items-center justify-center my-10 ">
+        <div className="flex items-center justify-center m-10 ">
           <ComboboxInput
             value={value}
             onChange={handleInput}
