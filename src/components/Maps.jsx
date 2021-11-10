@@ -16,6 +16,7 @@ import {
   ComboboxList,
   ComboboxOption,
 } from '@reach/combobox';
+import uniqid from 'uniqid';
 import '../search.css';
 import qs from 'query-string';
 
@@ -45,14 +46,12 @@ const MarkerPark = ({ children }) => children;
 
 export default function Maps(props) {
   const [localisation, setLocalisation] = useState({ defaultLocation });
-  const [zoomIn, setZoomIn] = useState(13);
-  const [bounds, setBounds] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  // const [markers, setMarkers] = React.useState([]);
+
   const [selected, setSelected] = React.useState(false);
 
   const mapRef = React.useRef();
@@ -70,18 +69,7 @@ export default function Maps(props) {
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
-  // const points = parkings.map((parking) => ({
-  //   type: 'Feature',
-  //   properties: {
-  //     cluster: false,
-  //     parkingId: parking.idparking,
-  //     proprietaire: parking.proprietaire,
-  //   },
-  //   geometry: {
-  //     type: 'Point',
-  //     coordinates: [parseFloat(parking.lat), parseFloat(parking.lon)],
-  //   },
-  // }));
+
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
@@ -106,10 +94,10 @@ export default function Maps(props) {
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
           return (
-            <>
+            <div key={uniqid()}>
               <Marker
                 className="parking-marker"
-                key={parking.gid}
+                key={uniqid()}
                 position={Parklocation}
                 onClick={() => setSelected(parking.gid)}
                 icon={{
@@ -118,7 +106,7 @@ export default function Maps(props) {
               />
               {selected === parking.gid ? (
                 <InfoWindow
-                  key={parking.gid}
+                  key={uniqid()}
                   position={Parklocation}
                   disableAutoPan="true"
                 >
@@ -186,17 +174,17 @@ export default function Maps(props) {
                   </>
                 </InfoWindow>
               ) : null}
-              {/* <Marker
-                key={`${localisation}`}
-                position={localisation}
-                icon={{
-                  url: `carUser.png`,
-                }}
-                onClick={() => setSelected(localisation)}
-              /> */}
-            </>
+            </div>
           );
         })}
+        <Marker
+          key={localisation}
+          position={setLocalisation}
+          icon={{
+            url: `carUser.png`,
+          }}
+        />
+        ;
       </GoogleMap>
     </div>
   );
@@ -228,7 +216,6 @@ function Locate({ panTo, setLocalisation }) {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             });
-            console.log(setLocalisation);
           },
           () => null
         );
