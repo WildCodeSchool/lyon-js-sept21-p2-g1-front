@@ -7,9 +7,7 @@ const Navbar = () => {
       <nav>
         <ul className="flex justify-start mx-5 p-5 space-x-4">
           <li>
-            <Link exact to="/">
-              Acceuil
-            </Link>
+            <Link to="/">Acceuil</Link>
           </li>
           <li>
             <Link to="/share">Partage</Link>

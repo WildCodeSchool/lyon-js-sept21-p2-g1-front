@@ -23,9 +23,6 @@ import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useSwr from 'swr';
-import { MarkerClusterer } from '@googlemaps/markerclusterer';
-import { RiParkingBoxFill } from 'react-icons/ri';
-import img from '../assets/iconCar.png';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -114,12 +111,12 @@ export default function Maps(props) {
                 className="parking-marker"
                 key={parking.gid}
                 position={Parklocation}
-                onClick={() => setSelected(parking.idparking)}
+                onClick={() => setSelected(parking.gid)}
                 icon={{
                   url: `car-park.png`,
                 }}
               />
-              {selected === parking.idparking ? (
+              {selected === parking.gid ? (
                 <InfoWindow
                   key={parking.gid}
                   position={Parklocation}

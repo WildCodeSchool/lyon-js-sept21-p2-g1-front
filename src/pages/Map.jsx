@@ -7,7 +7,6 @@ function Map() {
     <div>
       <Maps />
       <LegendMaps />
-      <p className="text-center m-4 "> Data de la métropole de Lyon. </p>
     </div>
   );
 }

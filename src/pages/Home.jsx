@@ -1,3 +1,6 @@
+import React, { useContext } from 'react';
+import { Search } from '../components/Maps';
+import LoadingMapsContext from '../contexts/LoadingMapsContext';
 // import React, { useState, useEffect } from 'react';
 import img from '../assets/parking.jpg';
 import CardHome from '../components/CardHome';
@@ -6,15 +9,13 @@ import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
 import phoneImg from '../assets/phone.png';
-import { Search } from '../components/Maps';
 
 function Home() {
+  const { isLoaded } = useContext(LoadingMapsContext);
   return (
     <>
       <div className="overflow-hidden">
-        <div className="mx-20 mt-44">
-          <Search />
-        </div>
+        <div className="mx-20 mt-44">{isLoaded && <Search />}</div>
         <div className="w-full absolute h-screen -z-1 top-0">
           <img src={img} alt="parking" />
           <div className="secondary__color visible md:invisible bg-secondary w-full h-screen">
