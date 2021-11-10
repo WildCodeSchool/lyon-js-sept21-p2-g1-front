@@ -16,6 +16,7 @@ import {
   ComboboxList,
   ComboboxOption,
 } from '@reach/combobox';
+import uniqid from 'uniqid';
 import '../search.css';
 import qs from 'query-string';
 
@@ -23,19 +24,12 @@ import '@reach/combobox/styles.css';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useSwr from 'swr';
-import useSupercluster from 'use-supercluster';
-import { RiParkingBoxFill } from 'react-icons/ri';
-import img from '../assets/iconCar.png';
 
 const libraries = ['places'];
 const mapContainerStyle = {
   height: '500px',
   // width: '80%',
 };
-
-// const onLoad = (Marker) => {
-//   console.log('marker: ', Marker);
-// };
 
 const options = {
   disableDefaultUI: true,
@@ -48,19 +42,16 @@ const defaultLocation = {
 };
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
-const MarkerPark = ({ children }) => children;
 
 export default function Maps() {
   const [localisation, setLocalisation] = useState({ defaultLocation });
-  const [zoomIn, setZoomIn] = useState(13);
-  const [bounds, setBounds] = useState(null);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  // const [markers, setMarkers] = React.useState([]);
-  // const [selected, setSelected] = React.useState(null);
+
+  const [selected, setSelected] = React.useState(false);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -73,22 +64,11 @@ export default function Maps() {
   }, []);
 
   const url =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1100&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
-  const points = parkings.map((parking) => ({
-    type: 'Feature',
-    properties: {
-      cluster: false,
-      parkingId: parking.idparking,
-      proprietaire: parking.proprietaire,
-    },
-    geometry: {
-      type: 'Point',
-      coordinates: [parseFloat(parking.lat), parseFloat(parking.lon)],
-    },
-  }));
+
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
@@ -107,40 +87,103 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
-        {
-          parkings.map((parking) => {
-            const Parklocation = { lat: parking.lat, lng: parking.lon };
-            return (
+        {parkings.map((parking) => {
+          const Parklocation = { lat: parking.lat, lng: parking.lon };
+          const handi = parking.capacitepmr;
+          const height = parking.gabarit;
+          const carShare = parking.capaciteautopartage;
+          return (
+            <div key={uniqid()}>
               <Marker
                 className="parking-marker"
-                key={parking.idparking}
+                key={uniqid()}
                 position={Parklocation}
+                onClick={() => setSelected(parking.gid)}
                 icon={{
                   url: `car-park.png`,
                 }}
-              >
-                <RiParkingBoxFill size="30px" color="red" />
-                <button className="parking-marker">
-                  <img className="imgParking" src={img} alt="img" />
-                </button>
-              </Marker>
-            );
-          })
-          // <Marker
-          // // key={${localisation}}
-          // position={localisation}
-          // icon={{
-          //   url: `carUser.png`,
-          // }}
-          // onClick={() => setSelected(localisation)}
-          // />
+              />
+              {selected === parking.gid ? (
+                <InfoWindow
+                  key={uniqid()}
+                  position={Parklocation}
+                  disableAutoPan="true"
+                >
+                  <>
+                    <h4 className="text-yellow-500"> {parking.nom} </h4>
+                    <p className="italic"> {parking.voieentree}</p>
+                    <p className="italic"> {parking.commune} </p>
 
-          // {selected ? (
-          //   <InfoWindow position={localisation}>
-          //   <p> Vous cherchez une place dans le quartier ?</p>
-          //   </InfoWindow>
-          // ) : null}
-        }
+                    <div className="flex p-2">
+                      <img
+                        src="iconParking.png"
+                        alt="icon Price"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.capacite} places </p>
+                    </div>
+
+                    <div className="flex p-2">
+                      <img
+                        src="iconOpen.png"
+                        alt="icon Open Hours"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.fermeture} </p>
+                    </div>
+
+                    <div className="flex p-2">
+                      <img
+                        src="iconPrice.png"
+                        alt="icon Price"
+                        className="w-6"
+                      />
+                      <p className="p-1"> {parking.reglementation} </p>
+                    </div>
+
+                    <div className="flex items-center">
+                      <>
+                        {handi > 0 ? (
+                          <img
+                            src="iconHandi.png"
+                            alt=""
+                            className="w-10 m-2 "
+                          />
+                        ) : null}
+                      </>
+                      <>
+                        {height === null ? null : (
+                          <img
+                            src="iconHeight.png"
+                            alt=""
+                            className="w-10 m-2"
+                          />
+                        )}
+                      </>
+                      <>
+                        {carShare > 0 ? null : (
+                          <img
+                            src="iconCarShare.png"
+                            alt=""
+                            className="w-10 m-2"
+                          />
+                        )}
+                      </>
+                    </div>
+                  </>
+                </InfoWindow>
+              ) : null}
+            </div>
+          );
+        })}
+        <Marker
+          key={localisation}
+          position={localisation}
+          icon={{
+            url: `carUser.png`,
+          }}
+        />
+        ;
       </GoogleMap>
     </div>
   );
@@ -155,11 +198,8 @@ function Locate({ panTo, setLocalisation }) {
     setActiveBtn(!isActiveBtn);
   };
 
-  const [marker, setMarker] = React.useState([]);
-
   return (
     <button
-      className="btn"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -172,24 +212,25 @@ function Locate({ panTo, setLocalisation }) {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             });
-            console.log(setLocalisation);
           },
           () => null
         );
       }}
     >
-      <img
-        onClick={handleToggle}
-        className={isActiveBtn ? null : 'animBtn'}
-        src="https://img.icons8.com/ios/50/000000/compass--v2.png"
-        alt="compass"
-      />
+      <div className="absolute ml-8 pt-30 pl-20">
+        <img
+          onClick={handleToggle}
+          className={isActiveBtn ? null : 'animBtn'}
+          src="https://img.icons8.com/ios/50/000000/compass--v2.png"
+          alt="compass"
+        />
+      </div>
     </button>
   );
 }
 
 // PARTIE RECHERCHE
-function Search({ panTo }) {
+export function Search({ panTo }) {
   const history = useHistory();
   const location = useLocation();
   const [address, setAddress] = React.useState();
@@ -215,7 +256,7 @@ function Search({ panTo }) {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
-      panTo({ lat, lng });
+      if (panTo) panTo({ lat, lng });
     } catch (error) {
       // console.log('😱 Error: ', error);
     }
@@ -223,6 +264,7 @@ function Search({ panTo }) {
   React.useEffect(() => {
     geocode(address);
   }, [address]);
+
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
   const handleInput = (e) => {
@@ -243,12 +285,12 @@ function Search({ panTo }) {
   return (
     <div className="inputBox">
       <Combobox onSelect={handleSelect}>
-        <div className="flex items-center justify-center my-10 ">
+        <div className="flex items-center justify-center m-10 ">
           <ComboboxInput
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg w-full mx-4 items-center text-center"
+            className="w-3/5 shadow p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>
@@ -256,7 +298,11 @@ function Search({ panTo }) {
           <ComboboxList>
             {status === 'OK' &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
+                <ComboboxOption
+                  key={id}
+                  value={description}
+                  className="text-gray-800"
+                />
               ))}
           </ComboboxList>
         </ComboboxPopover>

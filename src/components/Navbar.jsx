@@ -5,11 +5,9 @@ const Navbar = () => {
   return (
     <div>
       <nav>
-        <ul className="flex justify-start mx-5 p-5 space-x-4">
+        <ul className="flex bg-gray-900 justify-start mx-5 p-5 space-x-4 w-full">
           <li>
-            <Link exact to="/">
-              Acceuil
-            </Link>
+            <Link to="/">Acceuil</Link>
           </li>
           <li>
             <Link to="/share">Partage</Link>
