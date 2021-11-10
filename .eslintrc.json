@@ -31,7 +31,6 @@
     "react/button-has-type": "off",
     "no-use-before-define": "off",
     "no-param-reassign": "off",
-    "no-unused-vars": "off",
     "react/destructuring-assignment": "off"
   },
   "parser": "babel-eslint"
