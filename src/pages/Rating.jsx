@@ -20,6 +20,7 @@ const Rating = () => {
           “Merci de bien vouloir nous donner 5 min. de votre temps pour évaluer
           l'application.🧐 ”
         </p>
+
         <div className="input flex flex-col items-center justify-center">
           <Form.Field
             className="flex w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "

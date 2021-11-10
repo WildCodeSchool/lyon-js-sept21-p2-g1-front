@@ -47,7 +47,8 @@ function ApiRating() {
       >
         Avis
       </button>
-      <form className="flex flex-col  ">
+
+      <form className="flex flex-col">
         <p className=" text-center font-semibold ">
           “Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
           l'application.🧐 ”
@@ -56,11 +57,12 @@ function ApiRating() {
       <div className="input flex flex-col items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="flex w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
+          className="flex w-full px-30 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
         >
           <label htmlFor="add-name">
             Nom:{' '}
             <input
+              className="flex w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
               control={Text}
               placeholder="Your name..."
               type="text"
