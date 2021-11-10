@@ -30,8 +30,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/button-has-type": "off",
     "no-use-before-define": "off",
-    "no-param-reassign": "off",
-    "react/destructuring-assignment": "off"
+    "no-param-reassign": "off"
   },
   "parser": "babel-eslint"
 }

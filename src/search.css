@@ -42,4 +42,12 @@
 
 .DataBox {
   width: 40%;
+  height: 150px;
+}
+
+.boxLegend {
+  width: 40%;
+  height: auto;
+}
+.boxInfo {
 }
