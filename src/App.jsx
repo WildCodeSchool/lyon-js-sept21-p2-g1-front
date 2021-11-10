@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <LoadMapsContextProvider>
-        <header className="bg-black">
+        <header className="">
           <Navbar />
         </header>
         <main>

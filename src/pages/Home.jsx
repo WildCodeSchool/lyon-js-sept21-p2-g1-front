@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import { Search } from '../components/Maps';
 import LoadingMapsContext from '../contexts/LoadingMapsContext';
-// import React, { useState, useEffect } from 'react';
 import img from '../assets/parking.jpg';
 import CardHome from '../components/CardHome';
 import circle from '../assets/arroww.png';
 import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
-import phoneImg from '../assets/phone.png';
+import phoneImg from '../assets/smartphone.png';
 
 function Home() {
   const { isLoaded } = useContext(LoadingMapsContext);
@@ -23,7 +22,7 @@ function Home() {
           </div>
           <Footer />
         </div>
-        <div className="phone absolute">
+        <div className="phone invisible md:visible flex justify-end items-end mt-20 animate-bounce">
           <img src={phoneImg} alt={phoneImg} />
         </div>
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
