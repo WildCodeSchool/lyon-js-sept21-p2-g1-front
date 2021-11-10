@@ -1,17 +1,5 @@
 import React, { createContext } from 'react';
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from '@react-google-maps/api';
-
-//   return (
-// if(loadError) {
-// return 'Error';
-// },
-// if (!isLoaded) {return 'Loading'};
-//   )}
+import { useLoadScript } from '@react-google-maps/api';
 
 const loadingMapsContext = createContext({});
 export default loadingMapsContext;

@@ -42,9 +42,8 @@ const defaultLocation = {
 };
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
-const MarkerPark = ({ children }) => children;
 
-export default function Maps(props) {
+export default function Maps() {
   const [localisation, setLocalisation] = useState({ defaultLocation });
 
   const { isLoaded, loadError } = useLoadScript({
@@ -198,8 +197,6 @@ function Locate({ panTo, setLocalisation }) {
   const handleToggle = () => {
     setActiveBtn(!isActiveBtn);
   };
-
-  const [marker, setMarker] = React.useState([]);
 
   return (
     <button
