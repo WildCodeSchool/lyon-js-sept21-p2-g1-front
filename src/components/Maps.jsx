@@ -64,7 +64,7 @@ export default function Maps() {
   }, []);
 
   const url =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=10&start=1';
 
   const { data, error } = useSwr(url, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
@@ -92,6 +92,7 @@ export default function Maps() {
           const handi = parking.capacitepmr;
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
+          const website = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
           return (
             <div key={uniqid()}>
               <Marker
@@ -113,7 +114,7 @@ export default function Maps() {
                     <h4 className="text-yellow-500"> {parking.nom} </h4>
                     <p className="italic"> {parking.voieentree}</p>
                     <p className="italic"> {parking.commune} </p>
-
+                    <a href={website}>Website</a>
                     <div className="flex p-2">
                       <img
                         src="iconParking.png"
@@ -170,6 +171,35 @@ export default function Maps() {
                         )}
                       </>
                     </div>
+
+                    <>
+                      <button className="flex items-center mt-2 btnWaze">
+                        <div className="svg-wrapper-1">
+                          <div className="svg-wrapper">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z" />
+                              <path
+                                fill="currentColor"
+                                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <a
+                          href={website}
+                          target="blank"
+                          className="flex items-center"
+                        >
+                          <span> Waze</span>
+                          <img src="iconWaze.png" alt="waze w-1" />
+                        </a>
+                      </button>
+                    </>
                   </>
                 </InfoWindow>
               ) : null}
