@@ -63,17 +63,24 @@ export default function Maps() {
     mapRef.current.setZoom(17);
   }, []);
 
-  const url =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=10&start=1';
+  const urlDataLyon =
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=12&start=1';
 
-  const { data, error } = useSwr(url, { fetcher });
+  const urlPlaceFree = 'http://localhost:5001/placesFree';
+
+  const { data, error } = useSwr(urlDataLyon, { fetcher });
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
+
+  const { places } = useSwr(urlPlaceFree, { fetcher });
+  const placesFree = places && !error ? places.slice(0, 2000) : [];
+
+  console.log(placesFree);
 
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
   // PARTIE API
-
+  console.log(placesFree);
   return (
     <div>
       <Locate setLocalisation={setLocalisation} panTo={panTo} />
@@ -87,6 +94,14 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
+        {placesFree.map((place) => {
+          const freeLocation = { lat: place.lat, lgn: place.lon };
+          return (
+            <div key={uniqid()}>
+              <Marker key={uniqid()} position={freeLocation} />
+            </div>
+          );
+        })}
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
           const handi = parking.capacitepmr;
