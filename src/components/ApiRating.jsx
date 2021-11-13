@@ -4,7 +4,7 @@ import axios from 'axios';
 const ApiRating = () => {
   const [data, setData] = useState('');
   const fetchData = () => {
-    const result = axios.get('https://...').then((res) => {
+    const result = axios.get('https: //...').then((res) => {
       setData(res.data);
     });
   };
