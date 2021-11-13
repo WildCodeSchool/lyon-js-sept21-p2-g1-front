@@ -26,7 +26,30 @@ function Share() {
           </label>
           <div>
             <p> Géolocalisez moi : </p>
-            <img src={icon} alt="geoloc btn" />
+            <img
+              src={icon}
+              alt="geoloc btn"
+              onClick={function Locate() {
+                return (
+                  <div>
+                    <>
+                      if(navigator.geolocation)
+                      {navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                          const long = position.coords.longitude;
+                          const lat = position.coords.latitude;
+                          console.log(long);
+                          console.log(lat);
+                        },
+                        () => {
+                          alert(`Vous avez refusé la géolocalisation`);
+                        }
+                      )}
+                    </>
+                  </div>
+                );
+              }}
+            />
           </div>
         </Form.Field>
         <label htmlFor="file" className="m-2">
@@ -41,5 +64,4 @@ function Share() {
     </div>
   );
 }
-
 export default Share;
