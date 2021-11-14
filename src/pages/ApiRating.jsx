@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
+
 import RatingStar from '../components/RatingStar';
 
 import img from '../assets/parkingRating.jpg';
@@ -47,61 +48,51 @@ function ApiRating() {
       >
         Avis
       </button>
-
-      <form className="flex flex-col">
-        <p className=" text-center font-semibold ">
+      <div className="flex flex-col my-10">
+        <p className=" font-sans text-center text-2xl md:text-1xl-lg font-semibold ">
           “Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
           l'application.🧐 ”
         </p>
-      </form>
-      <div className="input flex flex-col items-center justify-center">
-        <form
-          onSubmit={handleSubmit}
-          className="flex w-full px-30 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
-        >
-          <label htmlFor="add-name">
-            Nom:{' '}
-            <input
-              className="flex w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
-              control={Text}
-              placeholder="Your name..."
-              type="text"
-              id="add-name"
-              required
-              value={newUserName}
-              onChange={handleNameChange}
-            />
-          </label>
-        </form>
+      </div>
 
-        <div className="flex m-8 justify-center items-center">
-          <RatingStar />
-        </div>
+      <Form onSubmit={handleSubmit} type="textarea">
+        <Form className="flex  flex-col mx-20 my-10  rounded-3xl border-gray-400 sm:w-9/12 md:w-7/12 lg:w-10/12">
+          <Form.Input
+            type="text"
+            placeholder="Votre nom"
+            name="name"
+            required
+            value={newUserName}
+            onChange={handleNameChange}
+          />
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex m-8 w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12"
-        >
-          <label htmlFor="add-message">
-            Message:{' '}
-            <input
-              className="flex m-8 w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12"
-              placeholder="Tell us more about us..."
-              type="textarea"
-              id="add-message"
-              required
-              value={newUserMessage}
-              onChange={handleMessageChange}
-            />
-          </label>
-          <Form.Field
+          <div className="flex m-8 justify-center items-center">
+            <RatingStar />
+          </div>
+
+          <Form.Input
+            type="textarea"
+            placeholder="Laissez-nous votre avis..."
+            name="message"
+            required
+            value={newUserMessage}
+            onChange={handleMessageChange}
+          />
+
+          <Form.Checkbox
             className="flex m-8 flex-col items-center w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-11/12 "
-            control={Checkbox}
+            required
             label="I agree to the Terms and Conditions"
           />
-          <Form.Field control={Button}>Submit</Form.Field>
-        </form>
-      </div>
+
+          <Form.Button
+            content="Submit"
+            required
+            onChange={handleSubmit}
+            value="Submit"
+          />
+        </Form>
+      </Form>
     </div>
   );
 }

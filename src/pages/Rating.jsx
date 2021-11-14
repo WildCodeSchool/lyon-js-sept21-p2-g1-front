@@ -21,9 +21,9 @@ const Rating = () => {
           l'application.🧐 ”
         </p>
 
-        <div className="input flex flex-col items-center justify-center">
+        <div className="input flex  flex-col items-center justify-center">
           <Form.Field
-            className="flex w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
+            className="flex bg-gray-100 w-full rounded-3xl border-gray-400 sm:w-full md:w-7/12 "
             control={Input}
             placeholder="Name"
           />
@@ -31,7 +31,7 @@ const Rating = () => {
             <RatingStar />
           </div>
           <Form.Field
-            className="flex m-8 w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-7/12"
+            className="flex m-8 w-full bg-gray-100 rounded-3xl border-gray-400 sm:w-full md:w-7/12"
             control={TextArea}
             placeholder="Tell us more about us..."
           />
