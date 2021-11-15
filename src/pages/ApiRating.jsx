@@ -10,7 +10,9 @@ function ApiRating() {
   const [userList, updateUserList] = useState([]);
   const [newUserName, setNewUserName] = useState('');
   const [newUserMessage, setNewUserMessage] = useState('');
+  const MAX_LENGTH = 30;
 
+  // évite que la page ne se recharge
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -28,7 +30,9 @@ function ApiRating() {
     setNewUserName(e.target.value);
   };
   const handleMessageChange = (e) => {
-    setNewUserMessage(e.target.value);
+    if (e.target.value.lenght <= MAX_LENGTH) {
+      setNewUserMessage(e.target.value);
+    }
   };
 
   useEffect(() => {
