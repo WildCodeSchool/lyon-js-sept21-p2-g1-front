@@ -1,7 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
-import Rating from './pages/Rating';
+import ApiRating from './pages/ApiRating';
 import Home from './pages/Home';
 import Share from './pages/Share';
 import Map from './pages/Map';
@@ -17,7 +17,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/rating" component={Rating} />
+            <Route path="/ApiRating" component={ApiRating} />
             <Route path="/share" component={Share} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route path="/map" component={Map} />
