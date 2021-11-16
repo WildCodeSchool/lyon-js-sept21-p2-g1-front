@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 import { Button, Checkbox, Form, FormField } from 'semantic-ui-react';
+import axios from 'axios';
 import icon from '../assets/gps.png';
-import img from '../assets/carParkFull.jpg';
+import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
 
 const customBtn = () => ({
@@ -14,13 +15,29 @@ const customBtn = () => ({
     },
   },
 });
-function Share() {
+
+function submitPlace() {
+  const [userName, setUserName] = useState();
+  const handleNameChange = (e) => {
+    setUserName(e.target.value);
+  };
+  axios
+    .post('http://localhost:5001/streetParkingSpots', {
+      userName,
+      // lati: setLati,
+      // lon: setLon,
+      // img: setImg,
+    })
+    .then((resp) => {
+      console.log(resp);
+    });
+
   return (
     <div className="flex flex-col justify-center">
       <div className="lg:h-40">
         <img
           className="object-cover h-48 w-full object-center"
-          src={img}
+          src={imgBg}
           alt="parking"
         />
       </div>
@@ -40,6 +57,7 @@ function Share() {
               type="text"
               className="m-2"
               placeholder="Votre nom"
+              onChange={handleNameChange}
             />
           </label>
         </Form.Field>
@@ -86,7 +104,7 @@ function Share() {
         <Form.Field className="flex justify-center w-3/4">
           <Checkbox label=" J'ai lu et j'accepte les Conditions Générales d'Utilisation de Space Park" />
         </Form.Field>
-        <Button className="submitBtn" type="submit">
+        <Button className="submitBtn" type="submit" onClick={submitPlace}>
           Partagez votre Place
         </Button>
       </Form>
@@ -94,4 +112,4 @@ function Share() {
   );
 }
 
-export default Share;
+export default submitPlace;
