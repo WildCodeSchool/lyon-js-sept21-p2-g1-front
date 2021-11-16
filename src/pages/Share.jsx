@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 import { Button, Checkbox, Form, FormField } from 'semantic-ui-react';
 import axios from 'axios';
-import icon from '../assets/gps.png';
 import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
 
@@ -16,22 +15,36 @@ const customBtn = () => ({
   },
 });
 
-function submitPlace() {
-  const [userName, setUserName] = useState();
+function sharePlace() {
+  const [userName, setUserName] = useState('');
+  const [img, setImage] = useState('');
   const handleNameChange = (e) => {
     setUserName(e.target.value);
   };
-  axios
-    .post('http://localhost:5001/streetParkingSpots', {
-      userName,
-      // lati: setLati,
-      // lon: setLon,
-      // img: setImg,
-    })
-    .then((resp) => {
-      console.log(resp);
-    });
 
+  const submitPlace = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lon = position.coords.longitude;
+          const lat = position.coords.latitude;
+          axios
+            .post('http://localhost:5001/streetParkingSpots', {
+              userName,
+              lat,
+              lon,
+              img,
+            })
+            .then(() => {
+              alert('Merci');
+            });
+        },
+        () => {
+          alert(`Vous avez refusé la géolocalisation`);
+        }
+      );
+    }
+  };
   return (
     <div className="flex flex-col justify-center">
       <div className="lg:h-40">
@@ -61,35 +74,6 @@ function submitPlace() {
             />
           </label>
         </Form.Field>
-        <FormField className="flex justify-center w-3/4">
-          <div>
-            <p> Géolocalisez moi : </p>
-            <img
-              src={icon}
-              alt="geoloc btn"
-              onClick={function Locate() {
-                return (
-                  <div>
-                    <>
-                      if(navigator.geolocation)
-                      {navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                          const long = position.coords.longitude;
-                          const lat = position.coords.latitude;
-                          console.log(long);
-                          console.log(lat);
-                        },
-                        () => {
-                          alert(`Vous avez refusé la géolocalisation`);
-                        }
-                      )}
-                    </>
-                  </div>
-                );
-              }}
-            />
-          </div>
-        </FormField>
 
         <FormField className="flex justify-center w-3/4">
           {/* <label htmlFor="file" className="m-2">
@@ -99,6 +83,7 @@ function submitPlace() {
             id="file"
             name="file"
             localeTranslations={customBtn()}
+            onChange={(info) => setImage(info.cdnUrl)}
           />
         </FormField>
         <Form.Field className="flex justify-center w-3/4">
@@ -112,4 +97,4 @@ function submitPlace() {
   );
 }
 
-export default submitPlace;
+export default sharePlace;
