@@ -51,6 +51,7 @@ export default function Maps() {
   });
 
   const [selected, setSelected] = React.useState(false);
+  const [selectedSpot, setSelectedSpot] = React.useState(false);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -65,8 +66,13 @@ export default function Maps() {
   const urlDataLyon =
     'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=12&start=1';
 
+  const urlDbSpot = 'http://localhost:5001/streetParkingSpots';
   const { data, error } = useSwr(urlDataLyon, { fetcher });
+  const { data: dataDb, error: errorDb } = useSwr(urlDbSpot, { fetcher });
+
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
+  const spots = dataDb && !errorDb ? dataDb.slice(0, 2000) : [];
+  console.log(urlDbSpot);
 
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
@@ -85,12 +91,74 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
+        {spots.map((spot) => {
+          const SpotLocation = { lat: spot.lat, lng: spot.lon };
+          const wazeSpot = `https://www.waze.com/ul?ll=${spot.lat}%2C${spot.lon}&navigate=yes&zoom=17`;
+
+          return (
+            <div key={uniqid()}>
+              <Marker
+                // className="parking-marker"
+                key={uniqid()}
+                position={SpotLocation}
+                onClick={() => setSelectedSpot(spot.id)}
+                icon={{
+                  url: `car-Spot.png`,
+                }}
+              />
+              {selectedSpot === spot.id ? (
+                <InfoWindow
+                  key={uniqid()}
+                  position={SpotLocation}
+                  disableAutoPan="true"
+                >
+                  <div>
+                    <h4 className="text-yellow-500">
+                      Place proposée par {spot.userName}
+                    </h4>
+                    <img
+                      src={spot.img}
+                      alt="place proposée"
+                      className="w-auto h-30 bg-cover rounded-xl shadow-xl"
+                    />
+                    <button className="flex items-center mt-2 btnWaze">
+                      <div className="svg-wrapper-1">
+                        <div className="svg-wrapper">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                          >
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                              fill="currentColor"
+                              d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <a
+                        href={wazeSpot}
+                        target="blank"
+                        className="flex items-center"
+                      >
+                        <span> Waze</span>
+                        <img src="iconWaze.png" alt="waze w-1" />
+                      </a>
+                    </button>
+                  </div>
+                </InfoWindow>
+              ) : null}
+            </div>
+          );
+        })}
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
           const handi = parking.capacitepmr;
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
-          const website = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
+          const wazePark = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
           return (
             <div key={uniqid()}>
               <Marker
@@ -112,7 +180,6 @@ export default function Maps() {
                     <h4 className="text-yellow-500"> {parking.nom} </h4>
                     <p className="italic"> {parking.voieentree}</p>
                     <p className="italic"> {parking.commune} </p>
-                    <a href={website}>Website</a>
                     <div className="flex p-2">
                       <img
                         src="iconParking.png"
@@ -189,7 +256,7 @@ export default function Maps() {
                           </div>
                         </div>
                         <a
-                          href={website}
+                          href={wazePark}
                           target="blank"
                           className="flex items-center"
                         >

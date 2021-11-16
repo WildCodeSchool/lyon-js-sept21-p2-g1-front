@@ -14,6 +14,10 @@ module.exports = {
       padding: {
         30: '2.8rem',
       },
+
+      height: {
+        30: '15rem',
+      },
     },
   },
   font: {
