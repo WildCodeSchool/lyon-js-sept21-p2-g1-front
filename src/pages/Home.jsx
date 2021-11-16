@@ -8,6 +8,10 @@ import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
 import phoneImg from '../assets/smartphone.png';
+import pardieu from '../assets/cardCity/pardieu.jpeg';
+import perrache from '../assets/cardCity/perrache.jpg';
+import aeroport from '../assets/cardCity/aeroport.jpg';
+import CardCity from '../components/CardCity';
 
 function Home() {
   const { isLoaded } = useContext(LoadingMapsContext);
@@ -39,9 +43,16 @@ function Home() {
             src={circle}
             alt="circle"
           />
-
           <CardHome name="Stationnement partagés" parking={parkingD} />
         </div>
+        {/* CardCity */}
+        <article className="">
+          <div className="cardCity flex justify-around items-center flex-col lg:flex-row mt-64">
+            <CardCity img={pardieu} nom="Lyon Part Dieu" quantity="875" />
+            <CardCity img={perrache} nom="Lyon Perrache" quantity="1300" />
+            <CardCity img={aeroport} nom="Aeroport St Exupery" quantity="234" />
+          </div>
+        </article>
       </div>
     </>
   );
