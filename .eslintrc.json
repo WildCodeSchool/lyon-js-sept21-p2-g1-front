@@ -29,9 +29,7 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/button-has-type": "off",
-    "no-use-before-define": "off",
-    "no-param-reassign": "off",
-    "no-unreachable": "off"
+    "no-use-before-define": "off"
   },
   "parser": "babel-eslint"
 }
