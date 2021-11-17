@@ -7,8 +7,8 @@ li a {
   font-weight: bold;
 }
 
-.phone {
-  top: 950px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+/* .phone {
+    top: 950px;
+    left: 50%;
+    transform: translateX(-50%);
+} */

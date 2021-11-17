@@ -5,6 +5,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,3 +15,4 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+serviceWorker.unregister();
