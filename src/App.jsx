@@ -20,7 +20,7 @@ function App() {
           <Navbar />
         </div>
         {/* Hamburger Navigation */}
-        <div className="hamurgerOpen visible md:invisible absolute cursor-pointer left-10 top-5 ">
+        <div className="hamurgerOpen visible flex md:invisible absolute cursor-pointer left-10 top-5 ">
           <Hamburger color="white" rounded toggled={isOpen} toggle={setOpen} />
           {isOpen && <Navbar />}
         </div>
