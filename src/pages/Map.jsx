@@ -1,5 +1,4 @@
 import React from 'react';
-import Api from '../components/Api';
 import Maps from '../components/Maps';
 
 function Map() {

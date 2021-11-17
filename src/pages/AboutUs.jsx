@@ -6,8 +6,8 @@ import img4 from '../assets/Cat3.jpg';
 
 const AboutUs = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-      <div className="bg-gray-100">
+    <div className="bg-gray-100">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
             <div className="w-full md:w-2/5 h-80">
@@ -89,11 +89,10 @@ const AboutUs = () => {
             <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
               <p className="text-xl text-gray-700 font-bold">Florence</p>
               <p className="text-base leading-relaxed text-gray-500 font-normal">
-                Cat ipsum dolor sit amet, sit in window and stare oooh, a bird,
-                yum yet scratch the furniture, yet jump on counter removed by
-                human jump on counter again removed by human meow before jumping
-                on counter this time to let the human know am coming back but
-                rub my belly hiss.
+                Cat ipsum dolor sit amet, purrr purr littel cat, little cat purr
+                purr. Mess up all the toilet paper fall over dead (not really
+                but gets sypathy), disappear for four days and return home with
+                an expensive injury; bite the vet.
               </p>
               <div className="flex justify-start space-x-2">
                 {' '}
@@ -158,11 +157,10 @@ const AboutUs = () => {
             <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
               <p className="text-xl text-gray-700 font-bold">Kalil</p>
               <p className="text-base leading-relaxed text-gray-500 font-normal">
-                Cat ipsum dolor sit amet, sit in window and stare oooh, a bird,
-                yum yet scratch the furniture, yet jump on counter removed by
-                human jump on counter again removed by human meow before jumping
-                on counter this time to let the human know am coming back but
-                rub my belly hiss.
+                Cat ipsum dolor sit amet, and sometimes switches in french and
+                say "miaou" just because well why not. That box? i can fit in
+                that box meowing non stop for food has closed eyes but still
+                sees you for when in doubt, wash.
               </p>
               <div className="flex justify-start space-x-2">
                 {' '}
@@ -227,11 +225,11 @@ const AboutUs = () => {
             <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
               <p className="text-xl text-gray-700 font-bold">Séléna</p>
               <p className="text-base leading-relaxed text-gray-500 font-normal">
-                Cat ipsum dolor sit amet, sit in window and stare oooh, a bird,
-                yum yet scratch the furniture, yet jump on counter removed by
-                human jump on counter again removed by human meow before jumping
-                on counter this time to let the human know am coming back but
-                rub my belly hiss.
+                Cat ipsum dolor sit amet, hack up furballs steal raw zucchini
+                off kitchen counter. Attack dog, run away and pretend to be
+                victim sweet beast, but sleep over your phone and make cute
+                snoring noises and make plans to dominate world and then take a
+                nap lasers are tiny mice.
               </p>
               <div className="flex justify-start space-x-2">
                 {' '}
@@ -286,8 +284,8 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 export default AboutUs;
