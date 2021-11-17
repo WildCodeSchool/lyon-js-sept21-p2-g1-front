@@ -5,6 +5,7 @@ import ApiRating from './pages/ApiRating';
 import Home from './pages/Home';
 import Share from './pages/Share';
 import Map from './pages/Map';
+
 import { LoadMapsContextProvider } from './contexts/LoadingMapsContext';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/ApiRating" component={ApiRating} />
+            <Route path="/rating" component={ApiRating} />
             <Route path="/share" component={Share} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route path="/map" component={Map} />

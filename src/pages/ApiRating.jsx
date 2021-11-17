@@ -1,28 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import { Form, TextArea } from 'semantic-ui-react';
-
-import RatingStar from '../components/RatingStar';
+import { Form, Rating } from 'semantic-ui-react';
 
 import img from '../assets/parkingRating.jpg';
 
 function ApiRating() {
-  const [userList, updateUserList] = useState([]);
   const [newUserName, setNewUserName] = useState('');
   const [newUserMessage, setNewUserMessage] = useState('');
-  const MAX_LENGTH = 30;
+  const [userRating, setUserRating] = useState(3);
 
-  // évite que la page ne se recharge
+  // évite que la page  se recharge
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5001/users', {
+      .post('http://localhost:5001/ratings', {
         name: newUserName,
         message: newUserMessage,
+        note: userRating,
       })
-      .then((resp) => {
-        updateUserList([...userList, resp.data]);
+      .then(() => {
+        alert('Merci pour votre participation.');
       });
   };
 
@@ -31,16 +29,12 @@ function ApiRating() {
   };
 
   const handleMessageChange = (e) => {
-    if (e.target.value.lenght <= MAX_LENGTH) {
-      setNewUserMessage(e.target.value);
-    }
+    setNewUserMessage(e.target.value);
   };
 
-  useEffect(() => {
-    axios.get('http://localhost:5001/users').then((response) => {
-      updateUserList(response.data);
-    });
-  }, []);
+  const handleChangeOnRate = (e, { rating }) => {
+    setUserRating(rating);
+  };
 
   return (
     <div>
@@ -60,47 +54,44 @@ function ApiRating() {
         </p>
       </div>
 
-      <Form onSubmit={handleSubmit} type="textarea">
-        <Form className="flex  flex-col mx-20 my-10  rounded-3xl border-gray-400 sm:w-9/12 md:w-7/12 lg:w-10/12">
-          <Form.Input
-            type="text"
-            placeholder="Votre nom"
-            name="name"
-            cd
-            required
-            value={newUserName}
-            onChange={handleNameChange}
-          />
+      <Form
+        onSubmit={handleSubmit}
+        className="flex  flex-col mx-20 my-10  rounded-3xl border-gray-400 sm:w-9/12 md:w-7/12 lg:w-10/12"
+      >
+        <Form.Input
+          type="text"
+          placeholder="Votre nom"
+          name="name"
+          required
+          value={newUserName}
+          onChange={handleNameChange}
+        />
 
-          <div className="flex m-8 justify-center items-center">
-            <RatingStar />
-          </div>
-
-          <Form>
-            <TextArea
-              input="textarea"
-              placeholder="Tell us more"
-              name="message"
-              required
-              value={newUserMessage}
-              onChange={handleMessageChange}
+        <div className="flex m-8 justify-center items-center">
+          <div>
+            <Rating
+              value={userRating}
+              onRate={handleChangeOnRate}
+              maxRating={5}
+              icon="star"
+              size="huge"
             />
-          </Form>
+          </div>
+        </div>
 
-          <Form.Checkbox
-            className="flex m-8 flex-col items-center w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-11/12 "
-            required
-            label="I agree to the Terms and Conditions"
-          />
-
-          <Form.Button
-            input="text"
-            content="Submit"
-            required
-            onChange={handleSubmit}
-            value="Submit"
-          />
-        </Form>
+        <Form.TextArea
+          placeholder="Tell us more"
+          name="message"
+          required
+          value={newUserMessage}
+          onChange={handleMessageChange}
+        />
+        <Form.Checkbox
+          className="flex  flex-col items-center w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-11/12 "
+          required
+          label="I agree to the Terms and Conditions"
+        />
+        <Form.Button input="text" content="Submit" required value="Submit" />
       </Form>
     </div>
   );
