@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Form } from 'semantic-ui-react';
+import { Form, TextArea } from 'semantic-ui-react';
 
 import RatingStar from '../components/RatingStar';
 
@@ -29,6 +29,7 @@ function ApiRating() {
   const handleNameChange = (e) => {
     setNewUserName(e.target.value);
   };
+
   const handleMessageChange = (e) => {
     if (e.target.value.lenght <= MAX_LENGTH) {
       setNewUserMessage(e.target.value);
@@ -53,7 +54,7 @@ function ApiRating() {
         Avis
       </button>
       <div className="flex flex-col my-10">
-        <p className=" font-sans text-center text-2xl md:text-1xl-lg font-semibold ">
+        <p className=" font-sans text-center text-1xl md:text-1xl-lg font-semibold ">
           “Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
           l'application.🧐 ”
         </p>
@@ -74,14 +75,16 @@ function ApiRating() {
             <RatingStar />
           </div>
 
-          <Form.Input
-            type="textarea"
-            placeholder="Laissez-nous votre avis..."
-            name="message"
-            required
-            value={newUserMessage}
-            onChange={handleMessageChange}
-          />
+          <Form>
+            <TextArea
+              input="textarea"
+              placeholder="Tell us more"
+              name="message"
+              required
+              value={newUserMessage}
+              onChange={handleMessageChange}
+            />
+          </Form>
 
           <Form.Checkbox
             className="flex m-8 flex-col items-center w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-11/12 "
@@ -90,6 +93,7 @@ function ApiRating() {
           />
 
           <Form.Button
+            input="text"
             content="Submit"
             required
             onChange={handleSubmit}
