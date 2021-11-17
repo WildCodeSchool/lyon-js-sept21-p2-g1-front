@@ -49,8 +49,6 @@
   width: 40%;
   height: auto;
 }
-.boxInfo {
-}
 
 .btn {
 }
@@ -102,7 +100,6 @@ btnWaze:active {
   from {
     transform: translateY(0.1em);
   }
-
   to {
     transform: translateY(-0.1em);
   }

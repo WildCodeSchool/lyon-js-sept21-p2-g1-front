@@ -1,4 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { Divide as Hamburger } from 'hamburger-react';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
 import Rating from './pages/Rating';
@@ -6,14 +8,22 @@ import Home from './pages/Home';
 import Share from './pages/Share';
 import Map from './pages/Map';
 import { LoadMapsContextProvider } from './contexts/LoadingMapsContext';
+import Footer from './components/Footer';
+import './index.css';
 
 function App() {
+  const [isOpen, setOpen] = useState(false);
   return (
-    <div>
+    <div className="relative">
       <LoadMapsContextProvider>
-        <header className="">
+        <div className="navbar invisible md:visible absolute flex left-10 ">
           <Navbar />
-        </header>
+        </div>
+        {/* Hamburger Navigation */}
+        <div className="hamurgerOpen visible md:invisible absolute cursor-pointer left-10 top-5 ">
+          <Hamburger color="white" rounded toggled={isOpen} toggle={setOpen} />
+          {isOpen && <Navbar />}
+        </div>
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -23,7 +33,7 @@ function App() {
             <Route path="/map" component={Map} />
           </Switch>
         </main>
-        <footer> </footer>
+        <Footer />
       </LoadMapsContextProvider>
     </div>
   );
