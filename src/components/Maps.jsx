@@ -65,7 +65,7 @@ export default function Maps() {
   }, []);
 
   const urlDataLyon =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=12&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
 
   const urlDbSpot = 'http://localhost:5001/streetParkingSpots';
   const { data, error } = useSwr(urlDataLyon, { fetcher });

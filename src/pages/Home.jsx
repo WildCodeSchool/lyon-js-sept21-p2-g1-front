@@ -3,7 +3,7 @@ import perrache from '../assets/cardCity/perrache.jpg';
 import aeroport from '../assets/cardCity/aeroport.jpg';
 import CardCityMui from '../components/CardCityMui';
 import Phone from '../components/Phone';
-import test from '../assets/test.png';
+import animHome from '../assets/animationHome.gif';
 import Header from '../components/Header';
 
 function Home() {
@@ -16,17 +16,17 @@ function Home() {
       >
         <div className="text pb-4 text-center">
           <span className="text-white font-bold text-4xl md:text-7xl">
-            CHERCHER UNE PLACE
+            Chercher une place
           </span>
           <br />
           <br />
-          <span className="text-red-600 font-bold text-2xl md:text-5xl">
-            NA JAMAIS ETE AUSSI FACILE
+          <span className="text-gray-600 font-bold text-2xl md:text-5xl">
+            N'aura jamais été aussi facile
           </span>
         </div>
         {/* Card */}
         <div className="test flex items-center justify-center w-full px-4 pb-20 pt-16">
-          <img className="rounded-3xl shadow-2xl" src={test} alt="test" />
+          <img className="rounded-3xl shadow-2xl" src={animHome} alt="test" />
         </div>
         {/* smartPhone */}
         <div className="phone_home flex">

@@ -133,18 +133,6 @@ function sharePlace() {
                   />
                 </FormField>
               </div>
-
-              <div>
-                <iframe
-                  src="https://giphy.com/embed/EFGDfCzS5YA48"
-                  title="gif"
-                  width="480"
-                  height="330"
-                  frameBorder="0"
-                  className="hidden md:flex"
-                  allowFullScreen
-                />
-              </div>
             </div>
 
             {/* <button onClick={geoloc()} className="border-2 bg-pink-500">
@@ -159,10 +147,21 @@ function sharePlace() {
               <Button
                 type="submit"
                 onClick={submitPlace}
-                className="submitBt flex justify-center w-30"
+                className="flex justify-center items-center w-30"
               >
                 Partagez votre Place
               </Button>
+            </div>
+            <div>
+              <iframe
+                src="https://giphy.com/embed/EFGDfCzS5YA48"
+                title="gif"
+                width="480"
+                height="330"
+                frameBorder="0"
+                className="hidden md:flex"
+                allowFullScreen
+              />
             </div>
           </Form>
         </div>
