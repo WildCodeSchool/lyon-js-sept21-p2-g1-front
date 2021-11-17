@@ -66,6 +66,7 @@ function ApiRating() {
             type="text"
             placeholder="Votre nom"
             name="name"
+            cd
             required
             value={newUserName}
             onChange={handleNameChange}
