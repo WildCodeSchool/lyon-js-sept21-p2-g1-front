@@ -1,105 +1,106 @@
 .search input {
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
 }
 
 .animBtn {
-    -webkit-animation: rotate 3s normal linear;
+  -webkit-animation: rotate 3s normal linear;
 }
 
 .parking-marker {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 
 .parking-marker img {
-    width: 10px;
+  width: 10px;
 }
 
 @keyframes rotate {
-    0% {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
-    25% {
-        -webkit-transform: rotate3d(0, 0, 1, 90deg);
-        transform: rotate3d(0, 0, 1, 120deg);
-    }
-    50% {
-        -webkit-transform: rotate3d(0, 0, 1, 180deg);
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
-    75% {
-        -webkit-transform: rotate3d(0, 0, 1, 270deg);
-        transform: rotate3d(0, 0, 1, 120deg);
-    }
-    100% {
-        -webkit-transform: rotate3d(0, 0, 1, 360deg);
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 120deg);
+  }
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 120deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
 }
 
 .DataBox {
-    width: 40%;
-    height: 150px;
+  width: 40%;
+  height: 150px;
 }
 
 .boxLegend {
-    width: 40%;
-    height: auto;
+  width: 40%;
+  height: auto;
 }
 
-.btn {}
+.btn {
+}
 
 .btnWaze {
-    font-family: inherit;
-    font-size: 20px;
-    background: #9cc0f9;
-    color: rgba(0, 0, 0, 0.5);
-    padding: 0.7em 1em;
-    padding-left: 0.9em;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.2s;
+  font-family: inherit;
+  font-size: 20px;
+  background: #9cc0f9;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
 }
 
 btnWaze span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
 }
 
 btnWaze svg {
-    display: block;
-    transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
 }
 
 btnWaze:hover .svg-wrapper {
-    animation: fly-1 0.6s ease-in-out infinite alternate;
+  animation: fly-1 0.6s ease-in-out infinite alternate;
 }
 
 btnWaze:hover svg {
-    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
 }
 
 btnWaze:hover span {
-    transform: translateX(5em);
+  transform: translateX(5em);
 }
 
 btnWaze:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 @keyframes fly-1 {
-    from {
-        transform: translateY(0.1em);
-    }
-    to {
-        transform: translateY(-0.1em);
-    }
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
 }
