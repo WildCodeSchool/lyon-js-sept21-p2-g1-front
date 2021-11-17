@@ -1,3 +1,4 @@
+import React from 'react';
 import pardieu from '../assets/cardCity/pardieu.jpeg';
 import perrache from '../assets/cardCity/perrache.jpg';
 import aeroport from '../assets/cardCity/aeroport.jpg';
@@ -29,8 +30,8 @@ function Home() {
           <img className="rounded-3xl shadow-2xl" src={test} alt="test" />
         </div>
         {/* smartPhone */}
-        <div className="phone_home flex">
-          <div className="phone pb-12 flex justify-start">
+        <div className="phone_home" id="phone">
+          <div className="phone pb-12 float-right">
             <Phone />
           </div>
         </div>
