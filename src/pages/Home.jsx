@@ -37,11 +37,11 @@ function Home() {
         {/* CardCity */}
         <div className="card__city_Mui grid pb-20">
           <div className="cardCity grid grid-cols-1 gap-x-20 pb-14 md:grid-cols-3 gap-y-10">
-            <CardCityMui img={pardieu} nom="Lyon Part Dieu" quantity="875" />
-            <CardCityMui img={perrache} nom="Lyon Perrache" quantity="1300" />
+            <CardCityMui img={pardieu} name="Lyon Part Dieu" quantity="875" />
+            <CardCityMui img={perrache} name="Lyon Perrache" quantity="1300" />
             <CardCityMui
               img={aeroport}
-              nom="Aeroport St Exupery"
+              name="Aeroport St Exupery"
               quantity="234"
             />
           </div>
