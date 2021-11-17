@@ -1,27 +1,28 @@
 import React from 'react';
+import '../search.css';
 
 const LegendMaps = () => {
   return (
-    <div className="boxInfo flex items-center justify-center">
-      <div className="boxLegend m-4 border-2 rounded-3xl  shadow-2xl ">
-        <div className="flex items-center justify-center">
-          <img src="iconHandi.png" alt="pmr" className="w-1 m-4" />
+    <div className="boxInfo flex justify-center pt-10 items-stretch pb-10">
+      <div className="boxLegend m-4 border-1 rounded-3xl  shadow-2xl ">
+        <div className="flex items-center justify-center mt-2">
+          <img src="iconHandi.png" alt="pmr" className="w-12" />
           <p className="text-xs">
             Stationnement accessible aux personnes à mobilité réduite
           </p>
         </div>
 
-        <div className="flex items-center justify-center mt-3 m-4">
+        <div className="flex items-center justify-center">
           <img
             src="iconHeight.png"
             alt="hauteur véhicule"
-            className="w-8 m-4"
+            className="w-12 m-4"
           />
           <p className="text-xs">La hauteur du parking est inférieure à 2m</p>
         </div>
 
-        <div className="flex items-center justify-center mt-3">
-          <img src="iconCarShare.png" alt="autopartage" className="w-3 m-4" />
+        <div className="flex items-center justify-center">
+          <img src="iconCarShare.png" alt="autopartage" className="w-12 mb-4" />
           <p className="text-xs">
             Stationnement accessible aux véhicules en autopartage
           </p>
@@ -29,7 +30,7 @@ const LegendMaps = () => {
       </div>
       <div className="DataBox flex items-center m-8 justify-center flex-col">
         <img src="grandLyon.jpeg" alt="pmr" />
-        <p>
+        <p className="italic text-gray-600">
           Les datas sont fournies à titre indicatif par la métropole de Lyon.
         </p>
       </div>

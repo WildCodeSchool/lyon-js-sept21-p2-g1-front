@@ -5,7 +5,7 @@
 }
 
 .animBtn {
-  -webkit-animation: rotate 3s normal linear;
+  -webkit-animation: rotate 5s normal linear;
 }
 
 .parking-marker {
@@ -50,7 +50,9 @@
   height: auto;
 }
 
-.btn {
+#map {
+  display: flex;
+  justify-content: center;
 }
 
 .btnWaze {
@@ -103,4 +105,9 @@ btnWaze:active {
   to {
     transform: translateY(-0.1em);
   }
+}
+
+.mapBox {
+  width: 100%;
+  height: 600px;
 }

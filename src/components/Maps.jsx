@@ -28,6 +28,7 @@ import useSwr from 'swr';
 const libraries = ['places'];
 const mapContainerStyle = {
   height: '500px',
+  width: '100%',
 };
 
 const options = {
@@ -79,11 +80,10 @@ export default function Maps() {
 
   // PARTIE API
   return (
-    <div>
+    <div className="mapBox">
       <Locate setLocalisation={setLocalisation} panTo={panTo} />
       <Search panTo={panTo} />
       <GoogleMap
-        className="flex justify-center w-full"
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={13}
@@ -312,11 +312,11 @@ function Locate({ panTo, setLocalisation }) {
         );
       }}
     >
-      <div className="absolute ml-8 pt-30 pl-20">
+      <div className="absolute mt-48 ml-14 z-10">
         <img
           onClick={handleToggle}
           className={isActiveBtn ? null : 'animBtn'}
-          src="https://img.icons8.com/ios/50/000000/compass--v2.png"
+          src="https://img.icons8.com/color/90/000000/compass--v1.png"
           alt="compass"
         />
       </div>

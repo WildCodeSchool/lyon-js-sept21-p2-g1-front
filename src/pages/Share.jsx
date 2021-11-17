@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
-import { Button, Checkbox, Form, FormField } from 'semantic-ui-react';
+import { Button, Form, FormField } from 'semantic-ui-react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
+import '../index.css';
 
 const customBtn = () => ({
   buttons: {
     choose: {
       files: {
-        one: 'upLoadez votre photo',
+        one: 'Partagez votre photo',
       },
     },
   },
@@ -18,6 +19,7 @@ const customBtn = () => ({
 
 function sharePlace() {
   const [userName, setUserName] = useState('');
+
   const [img, setImage] = useState('');
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -44,7 +46,7 @@ function sharePlace() {
                   'https://media.giphy.com/media/J4sITQCofMaKpx7EWq/giphy.gif',
                 imageWidth: 400,
                 imageHeight: 200,
-                imageAlt: 'gif',
+                imageAlt: 'gif succes',
               });
             });
         },
@@ -53,64 +55,74 @@ function sharePlace() {
             title: 'Oh nooooooon',
             text: 'Nous ne pouvons pas récuperer ta position',
             imageUrl:
-              'https://media.giphy.com/media/J4sITQCofMaKpx7EWq/giphy.gif',
+              'https://media.giphy.com/media/llmrnMkLqcssM6sYG7/giphy.gif',
             imageWidth: 400,
             imageHeight: 200,
-            imageAlt: 'gif',
+            imageAlt: 'gif error',
           });
         }
       );
     }
   };
   return (
-    <div className="flex flex-col justify-center">
-      <div className="lg:h-40">
-        <img
-          className="object-cover h-48 w-full object-center"
-          src={imgBg}
-          alt="parking"
-        />
-      </div>
-      <p className="p-20 flex justify-center">
-        Vous liberez une place de parking dans la rue ? Vous voyez une place
-        disponible ? Partagez l'information avec une photo pour la communauté de
-        Space-Park
-      </p>
-
-      <Form>
-        <Form.Field className="flex justify-center w-3/4">
-          <label htmlFor="name" className="m-2">
-            Votre nom
-            <input
-              id="name"
-              name="name"
-              type="text"
-              className="m-2"
-              placeholder="Votre nom"
-              onChange={handleNameChange}
-            />
-          </label>
-        </Form.Field>
-
-        <FormField className="flex justify-center w-3/4">
-          {/* <label htmlFor="file" className="m-2">
-            Votre photo : <input id="file" name="file" /> */}
-          <Widget
-            publicKey="bf85fdb4cd586983b065"
-            id="file"
-            name="file"
-            localeTranslations={customBtn()}
-            onChange={(info) => setImage(info.cdnUrl)}
+    <section id="section" className="border-white border-b-2">
+      <div className="flex flex-col justify-center">
+        <div className="lg:h-40">
+          <img
+            className="object-cover h-48 w-full object-center bgTop"
+            src={imgBg}
+            alt="parking"
           />
-        </FormField>
-        <Form.Field className="flex justify-center w-3/4">
-          <Checkbox label=" J'ai lu et j'accepte les Conditions Générales d'Utilisation de Space Park" />
-        </Form.Field>
-        <Button className="submitBtn" type="submit" onClick={submitPlace}>
-          Partagez votre Place
-        </Button>
-      </Form>
-    </div>
+        </div>
+        <p className="pt-20 p-30 text-xl flex justify-center text-gray-100	">
+          Vous liberez une place de parking dans la rue ? Vous voyez une place
+          disponible ? Partagez l'information avec une photo pour la communauté
+          de Space-Park
+        </p>
+
+        <Form>
+          <div className="flex flex-col pl-40">
+            <Form.Field className="w-3/4 md:w-2/5">
+              <label htmlFor="name" className="text-gray-100">
+                <p className="text-gray-300"> Votre nom : </p>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  className="m-2 flex flex-col justify-center"
+                  onChange={handleNameChange}
+                />
+              </label>
+            </Form.Field>
+          </div>
+
+          <FormField className=" pl-60 w-3/4 p-10">
+            {/* <label htmlFor="file" className="m-2">
+            Votre photo : <input id="file" name="file" /> */}
+            <Widget
+              publicKey="bf85fdb4cd586983b065"
+              id="file"
+              name="file"
+              localeTranslations={customBtn()}
+              onChange={(info) => setImage(info.cdnUrl)}
+            />
+          </FormField>
+          <p className="text-gray-300 pl-40">
+            En cliquant sur Partagez vous acceptez les conditions d'utilisations
+            de Space-Park
+          </p>
+          <div className="pl-60 w-30 p-10">
+            <Button
+              type="submit"
+              onClick={submitPlace}
+              className="submitBtn bg-green-300 flex justify-center w-30"
+            >
+              Partagez votre Place
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </section>
   );
 }
 
