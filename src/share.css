@@ -1,0 +1,21 @@
+.uploadcare--widget__button_type_open {
+  background-color: #ff9f29;
+  color: #1d1a1a;
+  cursor: pointer;
+}
+
+.uploadcare--widget__button_type_open:hover {
+  background-color: #1d1a1a;
+  color: #ff9f29;
+  cursor: pointer;
+}
+
+.submitBtn :hover {
+  background-color: #ff9f29;
+  color: #1d1a1a;
+}
+
+.submitBtn {
+  background-color: #1d1a1a;
+  color: #ff9f29;
+}
