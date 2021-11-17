@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { Divide as Hamburger } from 'hamburger-react';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
-import Rating from './pages/Rating';
+import ApiRating from './pages/ApiRating';
 import Home from './pages/Home';
 import Share from './pages/Share';
 import Map from './pages/Map';
+
 import { LoadMapsContextProvider } from './contexts/LoadingMapsContext';
 import Footer from './components/Footer';
 import './index.css';
@@ -27,7 +28,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/rating" component={Rating} />
+            <Route path="/rating" component={ApiRating} />
             <Route path="/share" component={Share} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route path="/map" component={Map} />

@@ -370,7 +370,6 @@ export function Search({ panTo }) {
   React.useEffect(() => {
     geocode(address);
   }, [address]);
-
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
   const handleInput = (e) => {
