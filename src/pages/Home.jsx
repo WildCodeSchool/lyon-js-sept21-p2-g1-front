@@ -1,60 +1,52 @@
-import React, { useContext } from 'react';
-import { Search } from '../components/Maps';
-import LoadingMapsContext from '../contexts/LoadingMapsContext';
-import img from '../assets/parking.jpg';
-import CardHome from '../components/CardHome';
-import circle from '../assets/arroww.png';
-import parkingD from '../assets/parkingHomeD.png';
-import parkingS from '../assets/parkingHomeS.png';
-import Footer from '../components/Footer';
-import phoneImg from '../assets/smartphone.png';
 import pardieu from '../assets/cardCity/pardieu.jpeg';
 import perrache from '../assets/cardCity/perrache.jpg';
 import aeroport from '../assets/cardCity/aeroport.jpg';
-import CardCity from '../components/CardCity';
+import CardCityMui from '../components/CardCityMui';
+import Phone from '../components/Phone';
+import test from '../assets/test.png';
+import Header from '../components/Header';
 
 function Home() {
-  const { isLoaded } = useContext(LoadingMapsContext);
   return (
-    <>
-      <div className="overflow-hidden">
-        <div className="mx-20 mt-44">{isLoaded && <Search />}</div>
-        <div className="w-full absolute h-screen -z-1 top-0">
-          <img src={img} alt="parking" />
-          <div className="secondary__color visible md:invisible bg-secondary w-full h-screen">
-            <div className="primary__color invisible md:visible bg-primary w-full h-screen" />
+    <div className="">
+      <Header />
+      <section
+        className="section__phone border-t-4 border-white border-b-2 flex flex-col items-center pt-20 mx-auto"
+        id="section"
+      >
+        <div className="text py-10 text-center">
+          <span className="text-white text-7xl">CHERCHER UNE PLACE</span>
+          <br />
+          <br />
+          <span className="text-red-600 text-5xl">
+            NA JAMAIS ETE AUSSI FACILE
+          </span>
+        </div>
+        {/* Card */}
+        <div className="test flex items-center justify-center w-full px-20 pb-20">
+          <img className="rounded-3xl shadow-2xl" src={test} alt="test" />
+        </div>
+        {/* smartPhone */}
+        <div className="phone_home flex">
+          <div className="phone pb-12 flex justify-start">
+            <Phone />
           </div>
-          <Footer />
-        </div>
-        <div className="phone invisible md:visible flex justify-end items-end mt-20 animate-bounce">
-          <img src={phoneImg} alt={phoneImg} />
-        </div>
-        <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
-          <CardHome name="Parking surveillé" parking={parkingS} />
-        </div>
-        <div className="visible md:invisible card__partage flex justify-center absolute w-full -bottom-48 shadow-2xl">
-          <img
-            className="-my-6 absolute cursor-pointer"
-            src={circle}
-            alt="circle"
-          />
-          <img
-            className="top-96 -my-5 absolute cursor-pointer"
-            src={circle}
-            alt="circle"
-          />
-          <CardHome name="Stationnement partagés" parking={parkingD} />
         </div>
         {/* CardCity */}
-        <article className="">
-          <div className="cardCity flex justify-around items-center flex-col lg:flex-row mt-64">
-            <CardCity img={pardieu} nom="Lyon Part Dieu" quantity="875" />
-            <CardCity img={perrache} nom="Lyon Perrache" quantity="1300" />
-            <CardCity img={aeroport} nom="Aeroport St Exupery" quantity="234" />
+        <div className="card__city_Mui grid pb-20">
+          <div className="cardCity grid grid-cols-1 gap-x-20 pb-14 md:grid-cols-3 gap-y-10">
+            <CardCityMui img={pardieu} nom="Lyon Part Dieu" quantity="875" />
+            <CardCityMui img={perrache} nom="Lyon Perrache" quantity="1300" />
+            <CardCityMui
+              img={aeroport}
+              nom="Aeroport St Exupery"
+              quantity="234"
+            />
           </div>
-        </article>
-      </div>
-    </>
+        </div>
+      </section>
+      <main className="bg-secondary md:bg-primary"> </main>
+    </div>
   );
 }
 

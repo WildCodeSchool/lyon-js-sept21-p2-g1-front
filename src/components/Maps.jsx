@@ -385,7 +385,7 @@ export function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="w-3/5 shadow p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center"
+            className="w-3/5 shadow-2xl p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>
