@@ -14,16 +14,18 @@ function Home() {
         className="section__phone border-t-4 border-white border-b-2 flex flex-col items-center pt-20 mx-auto"
         id="section"
       >
-        <div className="text py-10 text-center">
-          <span className="text-white text-7xl">CHERCHER UNE PLACE</span>
+        <div className="text pb-4 text-center">
+          <span className="text-white font-bold text-4xl md:text-7xl">
+            CHERCHER UNE PLACE
+          </span>
           <br />
           <br />
-          <span className="text-red-600 text-5xl">
+          <span className="text-red-600 font-bold text-2xl md:text-5xl">
             NA JAMAIS ETE AUSSI FACILE
           </span>
         </div>
         {/* Card */}
-        <div className="test flex items-center justify-center w-full px-20 pb-20">
+        <div className="test flex items-center justify-center w-full px-4 pb-20 pt-16">
           <img className="rounded-3xl shadow-2xl" src={test} alt="test" />
         </div>
         {/* smartPhone */}
