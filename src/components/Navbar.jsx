@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="test flex justify-center">
           <ul className="flex items-center justify-arround sm: md:flex ">
             <li className="text-md md:text-2xl">
-              <Link to="/">Acceuil</Link>
+              <Link to="/">Accueil</Link>
             </li>
             <li className="text-md">
               <Link to="/share">Partage</Link>

@@ -25,6 +25,25 @@ function sharePlace() {
     setUserName(e.target.value);
   };
 
+  // const geoloc = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         // console.log(position);
+  //         const long = position.coords.longitude;
+  //         const lat = position.coords.latitude;
+  //         alert(long);
+  //         alert(lat);
+  //       },
+  //       () => {
+  //         alert(
+  //           `Vous avez refusé la géolocalisation, l'application ne peur pas fonctionner, veuillez l'activer.!`
+  //         );
+  //       }
+  //     );
+  //   }
+  // };
+
   const submitPlace = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -101,12 +120,18 @@ function sharePlace() {
             Votre photo : <input id="file" name="file" /> */}
             <Widget
               publicKey="bf85fdb4cd586983b065"
+              tabs="camera"
               id="file"
               name="file"
               localeTranslations={customBtn()}
               onChange={(info) => setImage(info.cdnUrl)}
             />
           </FormField>
+
+          {/* <button onClick={geoloc()} className="border-2 bg-pink-500">
+            {' '}
+            Geolocalisez moi{' '}
+          </button> */}
           <p className="text-gray-300 pl-40">
             En cliquant sur Partagez vous acceptez les conditions d'utilisations
             de Space-Park
