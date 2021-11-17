@@ -11,8 +11,12 @@ module.exports = {
         primary: '#FF9F29',
         secondary: '#1D1A1A',
       }),
-      margin: {
-        '-540': '-540px',
+      padding: {
+        30: '2.8rem',
+      },
+
+      height: {
+        30: '15rem',
       },
     },
   },

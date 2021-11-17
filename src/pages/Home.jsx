@@ -1,28 +1,24 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { Search } from '../components/Maps';
+import LoadingMapsContext from '../contexts/LoadingMapsContext';
 import img from '../assets/parking.jpg';
 import CardHome from '../components/CardHome';
 import circle from '../assets/arroww.png';
 import parkingD from '../assets/parkingHomeD.png';
 import parkingS from '../assets/parkingHomeS.png';
 import Footer from '../components/Footer';
-import phoneImg from '../assets/phone.png';
-import Search from '../components/Search';
+import phoneImg from '../assets/smartphone.png';
+import pardieu from '../assets/cardCity/pardieu.jpeg';
+import perrache from '../assets/cardCity/perrache.jpg';
+import aeroport from '../assets/cardCity/aeroport.jpg';
+import CardCity from '../components/CardCity';
 
 function Home() {
-  // const [searchInput, setSearchInput] = useState('');
-  // const [validateSearch, setValidateSearch] = useState('');
-  // const [open, setOpen] = useState(false);
-
-  // useEffect(() => {
-  //   return () => {};
-  // }, []);
-
+  const { isLoaded } = useContext(LoadingMapsContext);
   return (
     <>
       <div className="overflow-hidden">
-        <div className="mx-20 mt-44">
-          <Search />
-        </div>
+        <div className="mx-20 mt-44">{isLoaded && <Search />}</div>
         <div className="w-full absolute h-screen -z-1 top-0">
           <img src={img} alt="parking" />
           <div className="secondary__color visible md:invisible bg-secondary w-full h-screen">
@@ -30,7 +26,7 @@ function Home() {
           </div>
           <Footer />
         </div>
-        <div className="phone absolute">
+        <div className="phone invisible md:visible flex justify-end items-end mt-20 animate-bounce">
           <img src={phoneImg} alt={phoneImg} />
         </div>
         <div className="visible md:invisible card__Home flex flex-wrap justify-center items-center inset-x-0 top-96 absolute">
@@ -47,25 +43,16 @@ function Home() {
             src={circle}
             alt="circle"
           />
-
           <CardHome name="Stationnement partagés" parking={parkingD} />
         </div>
-
-        <div className="absolute right-10 left-10 top-28">
-          {/* <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setValidateSearch(searchInput);
-            }}
-          >
-            <Input
-              fluid
-              icon="search"
-              placeholder="Search..."
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-          </form> */}
-        </div>
+        {/* CardCity */}
+        <article className="">
+          <div className="cardCity flex justify-around items-center flex-col lg:flex-row mt-64">
+            <CardCity img={pardieu} nom="Lyon Part Dieu" quantity="875" />
+            <CardCity img={perrache} nom="Lyon Perrache" quantity="1300" />
+            <CardCity img={aeroport} nom="Aeroport St Exupery" quantity="234" />
+          </div>
+        </article>
       </div>
     </>
   );

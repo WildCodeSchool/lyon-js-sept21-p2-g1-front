@@ -1,11 +1,12 @@
 import React from 'react';
 import Maps from '../components/Maps';
+import LegendMaps from '../components/LegendMaps';
 
 function Map() {
   return (
     <div>
       <Maps />
-      <p className="text-center m-4"> Made with Google Maps API</p>
+      <LegendMaps />
     </div>
   );
 }
