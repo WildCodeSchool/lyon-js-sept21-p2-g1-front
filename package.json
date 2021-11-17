@@ -9,6 +9,7 @@
     "@googlemaps/markerclusterer": "^1.0.11",
     "@googlemaps/markerwithlabel": "^1.3.2",
     "@googlemaps/react-wrapper": "^1.1.11",
+    "@material/checkbox": "^13.0.0",
     "@mui/icons-material": "^5.1.1",
     "@mui/material": "^5.1.1",
     "@mui/styled-engine-sc": "^5.1.0",

@@ -1,18 +1,7 @@
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import React from 'react';
 
-const MySwal = withReactContent(Swal);
 const AboutUs = () => {
-  return MySwal.fire({
-    title: <p>Hello World</p>,
-    footer: 'Copyright 2018',
-    didOpen: () => {
-      // `MySwal` is a subclass of `Swal`
-      //   with all the same instance & static methods
-      MySwal.clickConfirm();
-    },
-  }).then(() => {
-    return MySwal.fire(<p>Shorthand works too</p>);
-  });
+  return <div>Hello</div>;
 };
+
 export default AboutUs;
