@@ -84,7 +84,7 @@ function sharePlace() {
     }
   };
   return (
-    <section id="section" className="border-white border-b-2">
+    <section id="section" className=" border-b-2 ">
       <div className="flex flex-col justify-center">
         <div className="lg:h-40">
           <img
@@ -94,58 +94,78 @@ function sharePlace() {
           />
         </div>
         <p className="pt-20 p-30 text-xl flex justify-center text-gray-100	">
-          Vous liberez une place de parking dans la rue ? Vous voyez une place
+          Vous libérez une place de parking dans la rue ? Vous voyez une place
           disponible ? Partagez l'information avec une photo pour la communauté
           de Space-Park
         </p>
+        <div className="flex items-center justify-center pb-10">
+          <Form
+            className="flex flex-col items-center
+           justify-center border-gray-600 border-2 rounded-xl w-2/3"
+          >
+            <div className="boxForm flex flex-col p-10 justify-center items-center lg:flex-row">
+              <div className="boxInput flex-col justify-center p-2">
+                <div>
+                  <Form.Field>
+                    <label htmlFor="name" className="text-gray-100">
+                      <p className="text-center text-gray-300"> Votre nom : </p>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        className="m-2 flex flex-col justify-center w-44"
+                        onChange={handleNameChange}
+                      />
+                    </label>
+                  </Form.Field>
+                </div>
 
-        <Form>
-          <div className="flex flex-col pl-40">
-            <Form.Field className="w-3/4 md:w-2/5">
-              <label htmlFor="name" className="text-gray-100">
-                <p className="text-gray-300"> Votre nom : </p>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  className="m-2 flex flex-col justify-center"
-                  onChange={handleNameChange}
-                />
-              </label>
-            </Form.Field>
-          </div>
-
-          <FormField className=" pl-60 w-3/4 p-10">
-            {/* <label htmlFor="file" className="m-2">
+                <FormField className=" flex items-center pt-10 w-30">
+                  {/* <label htmlFor="file" className="m-2">
             Votre photo : <input id="file" name="file" /> */}
-            <Widget
-              publicKey="bf85fdb4cd586983b065"
-              tabs="camera"
-              id="file"
-              name="file"
-              localeTranslations={customBtn()}
-              onChange={(info) => setImage(info.cdnUrl)}
-            />
-          </FormField>
+                  <Widget
+                    publicKey="bf85fdb4cd586983b065"
+                    tabs="camera"
+                    id="file"
+                    name="file"
+                    localeTranslations={customBtn()}
+                    onChange={(info) => setImage(info.cdnUrl)}
+                  />
+                </FormField>
+              </div>
 
-          {/* <button onClick={geoloc()} className="border-2 bg-pink-500">
+              <div>
+                <iframe
+                  src="https://giphy.com/embed/EFGDfCzS5YA48"
+                  title="gif"
+                  width="480"
+                  height="330"
+                  frameBorder="0"
+                  className="hidden md:flex"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* <button onClick={geoloc()} className="border-2 bg-pink-500">
             {' '}
             Geolocalisez moi{' '}
           </button> */}
-          <p className="text-gray-300 pl-40">
-            En cliquant sur Partagez vous acceptez les conditions d'utilisations
-            de Space-Park
-          </p>
-          <div className="pl-60 w-30 p-10">
-            <Button
-              type="submit"
-              onClick={submitPlace}
-              className="submitBtn bg-green-300 flex justify-center w-30"
-            >
-              Partagez votre Place
-            </Button>
-          </div>
-        </Form>
+            <p className="text-gray-300">
+              En cliquant sur Partagez vous acceptez les conditions
+              d'utilisations de Space-Park
+            </p>
+            <div className="w-30 pb-10">
+              <Button
+                type="submit"
+                onClick={submitPlace}
+                className="submitBt flex justify-center w-30"
+              >
+                Partagez votre Place
+              </Button>
+            </div>
+          </Form>
+        </div>
       </div>
     </section>
   );
