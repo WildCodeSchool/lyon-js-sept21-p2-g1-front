@@ -20,7 +20,7 @@ function Home() {
           </span>
           <br />
           <br />
-          <span className="text-gray-600 font-bold text-2xl md:text-5xl">
+          <span className="text-gray-500 font-bold text-2xl md:text-5xl">
             N'aura jamais été aussi facile
           </span>
         </div>

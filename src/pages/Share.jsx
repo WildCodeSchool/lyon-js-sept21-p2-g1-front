@@ -88,7 +88,7 @@ function sharePlace() {
       <div className="flex flex-col justify-center">
         <div className="lg:h-40">
           <img
-            className="object-cover h-48 w-full object-center bgTop"
+            className="object-cover h-48 w-full object-center opacity-50"
             src={imgBg}
             alt="parking"
           />
