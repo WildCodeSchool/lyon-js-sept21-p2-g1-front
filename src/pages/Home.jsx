@@ -1,3 +1,4 @@
+import React from 'react';
 import pardieu from '../assets/cardCity/pardieu.jpeg';
 import perrache from '../assets/cardCity/perrache.jpg';
 import aeroport from '../assets/cardCity/aeroport.jpeg';
