@@ -5,29 +5,29 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: 'linear',
+    cssEase: 'linear-in-out',
   };
   return (
     <Slider {...settings}>
-      <div className="border-double">
-        <img src="https://picsum.photos/id/100/400/300" />
+      <div className="m-0">
+        <img src="http://placekitten.com/g/400/200" />
       </div>
       <div>
-        <img src="https://picsum.photos/id/100/400/300" />
+        <img src="http://placekitten.com/g/400/200" />
       </div>
       <div>
-        <img src="https://picsum.photos/id/100/400/300" />
+        <img src="http://placekitten.com/g/400/200" />
       </div>
       <div>
-        <img src="https://picsum.photos/id/100/400/300" />
+        <img src="http://placekitten.com/g/400/200" />
       </div>
       <div>
-        <img src="https://picsum.photos/id/100/400/300" />
+        <img src="http://placekitten.com/g/400/200" />
       </div>
     </Slider>
   );
