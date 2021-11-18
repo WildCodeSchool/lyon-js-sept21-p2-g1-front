@@ -7,7 +7,6 @@ import Search from '../components/Search';
 import CardCity from '../components/CardCity';
 import pardieu from '../assets/pardieu.jpeg';
 import pardieu1 from '../assets/car.png';
-import Slider from '../components/Slider';
 // import ModalNew from '../components/ModalNew';
 // import car from '../assets/car.svg';
 // import car1 from '../assets/car.png';
