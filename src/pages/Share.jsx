@@ -17,7 +17,7 @@ const customBtn = () => ({
   },
 });
 
-function sharePlace() {
+function SharePlace() {
   const [userName, setUserName] = useState('');
 
   const [img, setImage] = useState('');
@@ -170,4 +170,4 @@ function sharePlace() {
   );
 }
 
-export default sharePlace;
+export default SharePlace;

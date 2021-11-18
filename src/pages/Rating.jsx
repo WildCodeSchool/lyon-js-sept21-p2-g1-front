@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Checkbox, Form, Input, TextArea } from 'semantic-ui-react';
 import RatingStar from '../components/RatingStar';
 
@@ -18,7 +19,8 @@ const Rating = () => {
       <Form className="flex flex-col  ">
         <p className=" text-center font-semibold ">
           “Merci de bien vouloir nous donner 5 min. de votre temps pour évaluer
-          l'application.🧐 ”
+          l'application. // eslint-disable-next-line
+          <span>🧐</span>
         </p>
         <div className="input flex flex-col items-center justify-center">
           <Form.Field

@@ -33,14 +33,9 @@ body {
 }
 
 #phone {
-    animation-name: floating;
-    animation-delay: 1600ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    animation-duration: 3s;
+    padding-right: 60%;
 }
 
-#phone {
-    transform: translate3d(0, -50%, 0);
-    transition: transform 1000ms cubic-bezier(.52, .01, .16, 1) 1000ms;
+.slick-slider {
+    width: 100% !important;
 }

@@ -1,101 +1,106 @@
 {
-  "name": "lyon-js-sept21-p2-g1-front",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@craco/craco": "^5.9.0",
-    "@emotion/react": "^11.6.0",
-    "@emotion/styled": "^11.6.0",
-    "@googlemaps/markerclusterer": "^1.0.11",
-    "@googlemaps/markerwithlabel": "^1.3.2",
-    "@googlemaps/react-wrapper": "^1.1.11",
-    "@mui/icons-material": "^5.1.1",
-    "@mui/material": "^5.1.1",
-    "@mui/styled-engine-sc": "^5.1.0",
-    "@reach/combobox": "^0.16.3",
-    "@react-google-maps/api": "^2.7.0",
-    "@tailwindcss/forms": "^0.3.4",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@uploadcare/react-widget": "^1.3.8",
-    "axios": "^0.24.0",
-    "date-fns": "^2.25.0",
-    "eslint-plugin-react-button-has-type": "0.0.3",
-    "google-maps-react": "^2.0.6",
-    "hamburger-react": "^2.4.1",
-    "query-string": "^7.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-hook-google-maps": "0.0.3",
-    "react-icons": "^4.3.1",
-    "react-material-ui-carousel": "^3.0.4",
-    "react-places-autocomplete": "^7.3.0",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "^3.4.4",
-    "reactjs-popup": "^2.0.5",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.4",
-    "styled-components": "^5.3.3",
-    "supercluster": "^7.1.4",
-    "sweetalert2": "^11.1.10",
-    "sweetalert2-react-content": "^4.2.0",
-    "swr": "^1.0.1",
-    "uniqid": "^5.4.0",
-    "uploadcare-widget": "^3.13.0",
-    "use-places-autocomplete": "^1.10.0",
-    "use-supercluster": "^0.3.0",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
-    "clean": "npm-run-all format lint:fix"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.8.8",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.14.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^7.0.39",
-    "prettier": "^2.1.2",
-    "react-map-styles": "^0.3.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run clean"
+    "name": "lyon-js-sept21-p2-g1-front",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@craco/craco": "^5.9.0",
+        "@emotion/react": "^11.6.0",
+        "@emotion/styled": "^11.6.0",
+        "@googlemaps/markerclusterer": "^1.0.11",
+        "@googlemaps/markerwithlabel": "^1.3.2",
+        "@googlemaps/react-wrapper": "^1.1.11",
+        "@material-ui/core": "^4.12.3",
+        "@mui-treasury/components": "^1.10.1",
+        "@mui-treasury/styles": "^1.13.1",
+        "@mui/icons-material": "^5.1.1",
+        "@mui/material": "^5.1.1",
+        "@mui/styled-engine-sc": "^5.1.0",
+        "@reach/combobox": "^0.16.3",
+        "@react-google-maps/api": "^2.7.0",
+        "@tailwindcss/forms": "^0.3.4",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "@uploadcare/react-widget": "^1.3.8",
+        "axios": "^0.24.0",
+        "clsx": "^1.1.1",
+        "date-fns": "^2.25.0",
+        "eslint-plugin-react-button-has-type": "0.0.3",
+        "hamburger-react": "^2.4.1",
+        "query-string": "^7.0.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-icons": "^4.3.1",
+        "react-material-ui-carousel": "^3.0.4",
+        "react-places-autocomplete": "^7.3.0",
+        "react-router-dom": "^5.3.0",
+        "react-scripts": "^3.4.4",
+        "react-slick": "^0.28.1",
+        "react-swipeable-views": "^0.14.0",
+        "reactjs-popup": "^2.0.5",
+        "semantic-ui-css": "^2.4.1",
+        "semantic-ui-react": "^2.0.4",
+        "slick-carousel": "^1.8.1",
+        "styled-components": "^5.3.3",
+        "supercluster": "^7.1.4",
+        "sweetalert2": "^11.1.10",
+        "sweetalert2-react-content": "^4.2.0",
+        "swr": "^1.0.1",
+        "uniqid": "^5.4.0",
+        "uploadcare-widget": "^3.13.0",
+        "use-places-autocomplete": "^1.10.0",
+        "use-supercluster": "^0.3.0",
+        "web-vitals": "^1.1.2"
+    },
+    "scripts": {
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test",
+        "eject": "react-scripts eject",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
+        "clean": "npm-run-all format lint:fix"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "autoprefixer": "^9.8.8",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.12.0",
+        "eslint-config-airbnb": "^18.2.0",
+        "eslint-config-prettier": "^6.14.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.26.1",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^4.3.0",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^7.0.39",
+        "prettier": "^2.1.2",
+        "react-map-styles": "^0.3.0",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run clean"
+        }
     }
-  }
 }
