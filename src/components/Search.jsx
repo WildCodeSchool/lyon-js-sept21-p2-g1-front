@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from 'semantic-ui-react';
 
-const InputExampleFluid = () => {
+const Search = () => {
   return (
     <div>
       <Input
@@ -14,4 +14,4 @@ const InputExampleFluid = () => {
   );
 };
 
-export default InputExampleFluid;
+export default Search;

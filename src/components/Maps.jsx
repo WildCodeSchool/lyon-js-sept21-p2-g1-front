@@ -28,6 +28,7 @@ import useSwr from 'swr';
 const libraries = ['places'];
 const mapContainerStyle = {
   height: '500px',
+  width: '100%',
 };
 
 const options = {
@@ -64,7 +65,7 @@ export default function Maps() {
   }, []);
 
   const urlDataLyon =
-    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=12&start=1';
+    'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
 
   const urlDbSpot = 'http://localhost:5001/streetParkingSpots';
   const { data, error } = useSwr(urlDataLyon, { fetcher });
@@ -79,11 +80,10 @@ export default function Maps() {
 
   // PARTIE API
   return (
-    <div>
+    <div className="mapBox">
       <Locate setLocalisation={setLocalisation} panTo={panTo} />
       <Search panTo={panTo} />
       <GoogleMap
-        className="flex justify-center w-full"
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={13}
@@ -93,6 +93,8 @@ export default function Maps() {
       >
         {spots.map((spot) => {
           const SpotLocation = { lat: spot.lat, lng: spot.lon };
+          const SpotLocationMarker = { lat: spot.lat + 0.0025, lng: spot.lon };
+
           const wazeSpot = `https://www.waze.com/ul?ll=${spot.lat}%2C${spot.lon}&navigate=yes&zoom=17`;
 
           return (
@@ -109,11 +111,11 @@ export default function Maps() {
               {selectedSpot === spot.id ? (
                 <InfoWindow
                   key={uniqid()}
-                  position={SpotLocation}
+                  position={SpotLocationMarker}
                   disableAutoPan="true"
                 >
-                  <div>
-                    <h4 className="text-yellow-500">
+                  <div className="flex items-center justify-center flex-col">
+                    <h4 className="text-yellow-500 text-lg">
                       Place proposée par {spot.userName}
                     </h4>
                     <img
@@ -121,7 +123,7 @@ export default function Maps() {
                       alt="place proposée"
                       className="w-auto h-30 bg-cover rounded-xl shadow-xl"
                     />
-                    <button className="flex items-center mt-2 btnWaze">
+                    <button className="flex items-center mt-6 btnWaze">
                       <div className="svg-wrapper-1">
                         <div className="svg-wrapper">
                           <svg
@@ -141,10 +143,10 @@ export default function Maps() {
                       <a
                         href={wazeSpot}
                         target="blank"
-                        className="flex items-center"
+                        className="flex items-center justify-center"
                       >
                         <span> Waze</span>
-                        <img src="iconWaze.png" alt="waze w-1" />
+                        <img src="iconWaze.png" alt="waze" />
                       </a>
                     </button>
                   </div>
@@ -155,10 +157,19 @@ export default function Maps() {
         })}
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
+          const ParklocationMarker = {
+            lat: parking.lat + 0.0025,
+            lng: parking.lon,
+          };
+          const price = parking.reglementation;
+
           const handi = parking.capacitepmr;
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
           const wazePark = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
+          const icon = () => {
+            return price === 'Gratuit' ? `car-park.png` : `car-park2.png`;
+          };
           return (
             <div key={uniqid()}>
               <Marker
@@ -167,13 +178,13 @@ export default function Maps() {
                 position={Parklocation}
                 onClick={() => setSelected(parking.gid)}
                 icon={{
-                  url: `car-park.png`,
+                  url: icon(),
                 }}
               />
               {selected === parking.gid ? (
                 <InfoWindow
                   key={uniqid()}
-                  position={Parklocation}
+                  position={ParklocationMarker}
                   disableAutoPan="true"
                 >
                   <>
@@ -312,11 +323,11 @@ function Locate({ panTo, setLocalisation }) {
         );
       }}
     >
-      <div className="absolute ml-8 pt-30 pl-20">
+      <div className="absolute mt-48 ml-14 z-10">
         <img
           onClick={handleToggle}
           className={isActiveBtn ? null : 'animBtn'}
-          src="https://img.icons8.com/ios/50/000000/compass--v2.png"
+          src="https://img.icons8.com/color/90/000000/compass--v1.png"
           alt="compass"
         />
       </div>
@@ -384,7 +395,7 @@ export function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="w-3/5 shadow p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center"
+            className="w-full shadow-2xl p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center md:w-3/4"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>

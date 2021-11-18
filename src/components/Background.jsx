@@ -4,7 +4,7 @@ function Background({ image }) {
   return (
     <div>
       <section>
-        <div className="-mt-44 w-full">
+        <div className="">
           <img src={image} alt="Background" />
         </div>
       </section>
