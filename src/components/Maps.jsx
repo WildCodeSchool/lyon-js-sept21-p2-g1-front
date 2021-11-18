@@ -28,7 +28,7 @@ import useSwr from 'swr';
 const libraries = ['places'];
 const mapContainerStyle = {
   height: '500px',
-  // width: '80%',
+  width: '100%',
 };
 
 const options = {
@@ -52,6 +52,7 @@ export default function Maps() {
   });
 
   const [selected, setSelected] = React.useState(false);
+  const [selectedSpot, setSelectedSpot] = React.useState(false);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -63,23 +64,26 @@ export default function Maps() {
     mapRef.current.setZoom(17);
   }, []);
 
-  const url =
+  const urlDataLyon =
     'https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.json?maxfeatures=1200&start=1';
 
-  const { data, error } = useSwr(url, { fetcher });
+  const urlDbSpot = 'http://localhost:5001/streetParkingSpots';
+  const { data, error } = useSwr(urlDataLyon, { fetcher });
+  const { data: dataDb, error: errorDb } = useSwr(urlDbSpot, { fetcher });
+
   const parkings = data && !error ? data.values.slice(0, 2000) : [];
+  const spots = dataDb && !errorDb ? dataDb.slice(0, 2000) : [];
+  console.log(urlDbSpot);
 
   if (loadError) return 'Error';
   if (!isLoaded) return 'Loading...';
 
   // PARTIE API
-
   return (
-    <div>
+    <div className="mapBox">
       <Locate setLocalisation={setLocalisation} panTo={panTo} />
       <Search panTo={panTo} />
       <GoogleMap
-        className="flex justify-center w-full"
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={13}
@@ -87,11 +91,85 @@ export default function Maps() {
         options={options}
         onLoad={onMapLoad}
       >
+        {spots.map((spot) => {
+          const SpotLocation = { lat: spot.lat, lng: spot.lon };
+          const SpotLocationMarker = { lat: spot.lat + 0.0025, lng: spot.lon };
+
+          const wazeSpot = `https://www.waze.com/ul?ll=${spot.lat}%2C${spot.lon}&navigate=yes&zoom=17`;
+
+          return (
+            <div key={uniqid()}>
+              <Marker
+                // className="parking-marker"
+                key={uniqid()}
+                position={SpotLocation}
+                onClick={() => setSelectedSpot(spot.id)}
+                icon={{
+                  url: `car-Spot.png`,
+                }}
+              />
+              {selectedSpot === spot.id ? (
+                <InfoWindow
+                  key={uniqid()}
+                  position={SpotLocationMarker}
+                  disableAutoPan="true"
+                >
+                  <div className="flex items-center justify-center flex-col">
+                    <h4 className="text-yellow-500 text-lg">
+                      Place proposée par {spot.userName}
+                    </h4>
+                    <img
+                      src={spot.img}
+                      alt="place proposée"
+                      className="w-auto h-30 bg-cover rounded-xl shadow-xl"
+                    />
+                    <button className="flex items-center mt-6 btnWaze">
+                      <div className="svg-wrapper-1">
+                        <div className="svg-wrapper">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                          >
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path
+                              fill="currentColor"
+                              d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <a
+                        href={wazeSpot}
+                        target="blank"
+                        className="flex items-center justify-center"
+                      >
+                        <span> Waze</span>
+                        <img src="iconWaze.png" alt="waze" />
+                      </a>
+                    </button>
+                  </div>
+                </InfoWindow>
+              ) : null}
+            </div>
+          );
+        })}
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
+          const ParklocationMarker = {
+            lat: parking.lat + 0.0025,
+            lng: parking.lon,
+          };
+          const price = parking.reglementation;
+
           const handi = parking.capacitepmr;
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
+          const wazePark = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
+          const icon = () => {
+            return price === 'Gratuit' ? `car-park.png` : `car-park2.png`;
+          };
           return (
             <div key={uniqid()}>
               <Marker
@@ -100,20 +178,19 @@ export default function Maps() {
                 position={Parklocation}
                 onClick={() => setSelected(parking.gid)}
                 icon={{
-                  url: `car-park.png`,
+                  url: icon(),
                 }}
               />
               {selected === parking.gid ? (
                 <InfoWindow
                   key={uniqid()}
-                  position={Parklocation}
+                  position={ParklocationMarker}
                   disableAutoPan="true"
                 >
                   <>
                     <h4 className="text-yellow-500"> {parking.nom} </h4>
                     <p className="italic"> {parking.voieentree}</p>
                     <p className="italic"> {parking.commune} </p>
-
                     <div className="flex p-2">
                       <img
                         src="iconParking.png"
@@ -170,6 +247,35 @@ export default function Maps() {
                         )}
                       </>
                     </div>
+
+                    <>
+                      <button className="flex items-center mt-2 btnWaze">
+                        <div className="svg-wrapper-1">
+                          <div className="svg-wrapper">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z" />
+                              <path
+                                fill="currentColor"
+                                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <a
+                          href={wazePark}
+                          target="blank"
+                          className="flex items-center"
+                        >
+                          <span> Waze</span>
+                          <img src="iconWaze.png" alt="waze w-1" />
+                        </a>
+                      </button>
+                    </>
                   </>
                 </InfoWindow>
               ) : null}
@@ -217,11 +323,11 @@ function Locate({ panTo, setLocalisation }) {
         );
       }}
     >
-      <div className="absolute ml-8 pt-30 pl-20">
+      <div className="absolute mt-48 ml-14 z-10">
         <img
           onClick={handleToggle}
           className={isActiveBtn ? null : 'animBtn'}
-          src="https://img.icons8.com/ios/50/000000/compass--v2.png"
+          src="https://img.icons8.com/color/90/000000/compass--v1.png"
           alt="compass"
         />
       </div>
@@ -264,7 +370,6 @@ export function Search({ panTo }) {
   React.useEffect(() => {
     geocode(address);
   }, [address]);
-
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
   const handleInput = (e) => {
@@ -290,7 +395,7 @@ export function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="w-3/5 shadow p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center"
+            className="w-full shadow-2xl p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center md:w-3/4"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import phone from '../assets/phone.png';
+import phoneImg from '../assets/smartphone.png';
 
 function Phone() {
   return (
-    <div className="phone__container hidden md:flex justify-end animate-bounce">
-      <img className="phone" style={{ height: 100 }} src={phone} alt="Phone#" />
+    <div className="hidden md:flex">
+      <img src={phoneImg} alt={phoneImg} />
     </div>
   );
 }
