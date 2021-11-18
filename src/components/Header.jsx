@@ -3,9 +3,6 @@ import img from '../assets/parking.jpg';
 import { Search } from './Maps';
 import LoadingMapsContext from '../contexts/LoadingMapsContext';
 
-// import { Search } from './Maps';
-// import Navbar from './Navbar';
-
 function Header() {
   const { isLoaded } = useContext(LoadingMapsContext);
 

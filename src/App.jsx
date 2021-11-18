@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Divide as Hamburger } from 'hamburger-react';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';

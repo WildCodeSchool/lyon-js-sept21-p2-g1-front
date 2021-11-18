@@ -9,10 +9,10 @@ import Header from '../components/Header';
 
 function Home() {
   return (
-    <div className="">
+    <div id="fullpage">
       <Header />
       <section
-        className="section__phone border-t-4 border-white border-b-2 flex flex-col items-center pt-20 mx-auto"
+        className="section active border-t-4 border-white border-b-2 flex flex-col items-center pt-20 mx-auto"
         id="section"
       >
         <div className="flex flex-col p-10 md:flex-row ">
@@ -32,11 +32,10 @@ function Home() {
           {/* Card */}
         </div>
         {/* smartPhone */}
-        <div className="phone_home flex">
-          <div className="phone pb-12 flex justify-start">
-            <Phone />
-          </div>
+        <div className="phone pb-12" id="phone">
+          <Phone />
         </div>
+
         {/* CardCity */}
         <div className="card__city_Mui grid pb-20">
           <div className="cardCity grid grid-cols-1 gap-x-20 pb-14 md:grid-cols-3 gap-y-10">

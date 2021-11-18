@@ -44,3 +44,10 @@ body {
 .ui.star.rating .icon {
   color: white !important;
 }
+#phone {
+  padding-right: 60%;
+}
+
+.slick-slider {
+  width: 100% !important;
+}
