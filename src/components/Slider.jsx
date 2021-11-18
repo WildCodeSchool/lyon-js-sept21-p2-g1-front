@@ -10,7 +10,7 @@ const SimpleSlider = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: 'linear-in-out',
+    cssEase: 'linear',
   };
   return (
     <Slider {...settings}>
