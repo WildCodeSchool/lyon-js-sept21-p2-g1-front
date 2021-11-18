@@ -53,7 +53,7 @@ function ApiRating() {
         <Form
           onSubmit={handleSubmit}
           className="flex flex-col items-center
-         justify-center border-gray-600 border-2 rounded-xl w-2/3"
+         justify-center rounded-xl w-2/3"
         >
           <p className="text-center text-gray-300"> Votre nom : </p>
           <Form.Input

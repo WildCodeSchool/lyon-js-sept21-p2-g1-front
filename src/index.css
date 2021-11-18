@@ -40,3 +40,7 @@ body {
     rgb(29, 26, 26)
   );
 }
+
+.ui.star.rating .icon {
+  color: white !important;
+}

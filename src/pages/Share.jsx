@@ -92,16 +92,14 @@ function sharePlace() {
               <div className="boxInput flex-col justify-center p-2">
                 <div>
                   <Form.Field>
-                    <label htmlFor="name" className="text-gray-100">
-                      <p className="text-center text-gray-300"> Votre nom : </p>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        className="m-2 flex flex-col justify-center w-44"
-                        onChange={handleNameChange}
-                      />
-                    </label>
+                    <p className="text-center text-gray-300"> Votre nom : </p>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      className="m-2 flex flex-col justify-center w-44"
+                      onChange={handleNameChange}
+                    />
                   </Form.Field>
                 </div>
 

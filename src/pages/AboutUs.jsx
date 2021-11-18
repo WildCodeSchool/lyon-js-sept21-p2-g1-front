@@ -4,7 +4,7 @@ import img2 from '../assets/Cat1.jpg';
 import img3 from '../assets/Cat2.jpg';
 import img4 from '../assets/Cat3.jpg';
 import '../index.css';
-import img from '../assets/parkingRating.jpg';
+import img from '../assets/bgAboutUs.jpg';
 
 const AboutUs = () => {
   return (
@@ -13,7 +13,7 @@ const AboutUs = () => {
         <img className="object-cover h-48 w-full" src={img} alt="parking" />
       </div>
 
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+      <section className="max-w-6xl mx-auto pt-20 px-4 sm:px-6 lg:px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
             <div className="w-full md:w-2/5 h-80">

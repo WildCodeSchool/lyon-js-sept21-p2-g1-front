@@ -390,7 +390,7 @@ export function Search({ panTo }) {
   return (
     <div className="inputBox">
       <Combobox onSelect={handleSelect}>
-        <div className="flex items-center justify-center m-10 ">
+        <div className="flex items-center justify-center mb-4  md:mt-12">
           <ComboboxInput
             value={value}
             onChange={handleInput}

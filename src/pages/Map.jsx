@@ -10,7 +10,7 @@ function Map() {
         <img
           className="object-cover
           
-          h-52 w-full object-center pb-8"
+          h-52 w-full object-center"
           src={imgBg}
           alt="parking"
         />
