@@ -37,62 +37,76 @@ function ApiRating() {
   };
 
   return (
-    <div>
+    <div id="section" className="border-b-2">
       <div className="lg:h-40">
-        <img className="object-cover h-48 w-full" src={img} alt="parking" />
-      </div>
-      <button
-        className="bg-yellow-500  text-black -mt-56 ml-8 font-bold py-4 px-8 rounded-full"
-        type="button"
-      >
-        Avis
-      </button>
-      <div className="flex flex-col my-10">
-        <p className=" font-sans text-center text-1xl md:text-1xl-lg font-semibold ">
-          “Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
-          l'application.🧐 ”
-        </p>
-      </div>
-
-      <Form
-        onSubmit={handleSubmit}
-        className="flex  flex-col mx-20 my-10  rounded-3xl border-gray-400 sm:w-9/12 md:w-7/12 lg:w-10/12"
-      >
-        <Form.Input
-          type="text"
-          placeholder="Votre nom"
-          name="name"
-          required
-          value={newUserName}
-          onChange={handleNameChange}
+        <img
+          className="object-cover h-48 w-full object-center opacity-50"
+          src={img}
+          alt="parking"
         />
+      </div>
+      <p className="pt-20 p-30 text-xl flex flex-col text-center italic justify-center text-gray-100	">
+        Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
+        l'application.🧐
+      </p>
+      <div className="flex items-center justify-center pb-10">
+        <Form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center
+         justify-center border-gray-600 border-2 rounded-xl w-2/3"
+        >
+          <p className="text-center text-gray-300"> Votre nom : </p>
+          <Form.Input
+            type="text"
+            placeholder="Votre nom"
+            name="name"
+            required
+            value={newUserName}
+            onChange={handleNameChange}
+          />
 
-        <div className="flex m-8 justify-center items-center">
+          <div className="flex m-8 justify-center items-center">
+            <div>
+              <Rating
+                value={userRating}
+                onRate={handleChangeOnRate}
+                maxRating={5}
+                icon="star"
+                size="huge"
+              />
+            </div>
+          </div>
+
+          <p className="text-center text-gray-300">
+            Donnez nous votre avis à propos de votre expérience
+          </p>
+          <Form.TextArea
+            name="message"
+            required
+            value={newUserMessage}
+            onChange={handleMessageChange}
+          />
+          <div className="flex flex-row">
+            <Form.Checkbox required />
+            <p className="text-gray-300 ml-6">
+              En cliquant sur partagez vous acceptez les conditions
+              d'utilisations de Space-Park
+            </p>
+          </div>
+          <Form.Button input="text" content="Submit" required value="Submit" />
           <div>
-            <Rating
-              value={userRating}
-              onRate={handleChangeOnRate}
-              maxRating={5}
-              icon="star"
-              size="huge"
+            <iframe
+              src="https://giphy.com/embed/PMi3guLoOyd48MKDV5"
+              title="gif"
+              width="480"
+              height="330"
+              frameBorder="0"
+              className="hidden pb-10 md:flex"
+              allowFullScreen
             />
           </div>
-        </div>
-
-        <Form.TextArea
-          placeholder="Tell us more"
-          name="message"
-          required
-          value={newUserMessage}
-          onChange={handleMessageChange}
-        />
-        <Form.Checkbox
-          className="flex  flex-col items-center w-full px-5 rounded-3xl border-gray-400 sm:w-full md:w-11/12 "
-          required
-          label="I agree to the Terms and Conditions"
-        />
-        <Form.Button input="text" content="Submit" required value="Submit" />
-      </Form>
+        </Form>
+      </div>
     </div>
   );
 }
