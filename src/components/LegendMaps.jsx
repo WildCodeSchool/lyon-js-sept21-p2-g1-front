@@ -3,33 +3,53 @@ import '../search.css';
 
 const LegendMaps = () => {
   return (
-    <div className="boxInfo flex justify-center pt-14 items-stretch pb-10">
-      <div className="boxLegend m-4 border-2 border-gray-400 rounded-3xl  shadow-2xl ">
-        <div className="flex items-center justify-center mt-2">
-          <img src="iconHandi.png" alt="pmr" className="w-12" />
-          <p className="text-xs">
-            Stationnement accessible aux personnes à mobilité réduite
-          </p>
-        </div>
+    <div className="boxInfo flex justify-center pt-14 items-center pb-10 flex-col md:flex-row">
+      <div className="boxLegend border-2 border-gray-400 rounded-3xl  shadow-2xl flex flex-row">
+        <div className="flex flex-col justify-around items-start pl-4">
+          <div className="flex items-center mt-2">
+            <img src="car-park.png" alt="parking gratuit" />
+            <p className="text-xs pl-2">Parking gratuit</p>
+          </div>
 
-        <div className="flex items-center justify-center">
-          <img
-            src="iconHeight.png"
-            alt="hauteur véhicule"
-            className="w-12 m-4"
-          />
-          <p className="text-xs">La hauteur du parking est inférieure à 2m</p>
-        </div>
+          <div className="flex items-center mt-2">
+            <img src="car-park2.png" alt="parking gratuit" />
+            <p className="text-xs pl-2"> Parking à accès payant</p>
+          </div>
 
-        <div className="flex items-center justify-center">
-          <img
-            src="iconCarShare.png"
-            alt="autopartage"
-            className="w-12 mb-4 mx-6"
-          />
-          <p className="text-xs">
-            Stationnement accessible aux véhicules en autopartage
-          </p>
+          <div className="flex items-center mt-2">
+            <img src="car-Spot.png" alt="parking gratuit" />
+            <p className="text-xs pl-2">
+              Stationnement proposée par Space Park
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col justify-around mx-10 content-end">
+          <div className="flex items-center justify-start mt-2">
+            <img src="iconHandi.png" alt="pmr" className="w-12" />
+            <p className="text-xs">
+              Stationnement accessible aux personnes à mobilité réduite
+            </p>
+          </div>
+
+          <div className="flex items-center justify-start mt-2">
+            <img
+              src="iconCarShare.png"
+              alt="autopartage"
+              className="w-12 mb-4 mx-1"
+            />
+            <p className="text-xs">
+              Stationnement accessible aux véhicules en autopartage
+            </p>
+          </div>
+
+          <div className="flex items-center justify-start mt-2">
+            <img
+              src="iconHeight.png"
+              alt="hauteur véhicule"
+              className="w-12 m-2"
+            />
+            <p className="text-xs">La hauteur du parking est inférieure à 2m</p>
+          </div>
         </div>
       </div>
       <div className="DataBox flex items-center m-8 justify-center flex-col">

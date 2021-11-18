@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 import { Button, Form, FormField } from 'semantic-ui-react';
 import axios from 'axios';
+import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
@@ -24,25 +25,6 @@ function SharePlace() {
   const handleNameChange = (e) => {
     setUserName(e.target.value);
   };
-
-  // const geoloc = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         // console.log(position);
-  //         const long = position.coords.longitude;
-  //         const lat = position.coords.latitude;
-  //         alert(long);
-  //         alert(lat);
-  //       },
-  //       () => {
-  //         alert(
-  //           `Vous avez refusé la géolocalisation, l'application ne peur pas fonctionner, veuillez l'activer.!`
-  //         );
-  //       }
-  //     );
-  //   }
-  // };
 
   const submitPlace = () => {
     if (navigator.geolocation) {
@@ -93,11 +75,14 @@ function SharePlace() {
             alt="parking"
           />
         </div>
-        <p className="pt-20 p-30 text-xl flex justify-center text-gray-100	">
-          Vous libérez une place de parking dans la rue ? Vous voyez une place
-          disponible ? Partagez l'information avec une photo pour la communauté
-          de Space-Park
-        </p>
+        <div className="pt-20 p-30 text-xl flex flex-col text-center italic justify-center text-gray-100	">
+          <p> Vous libérez une place de parking dans la rue ? </p>
+          <p> Vous voyez une place disponible ? </p>
+          <p>
+            Partagez l'information avec une photo pour la communauté de
+            Space-Park
+          </p>
+        </div>
         <div className="flex items-center justify-center pb-10">
           <Form
             className="flex flex-col items-center
@@ -134,15 +119,17 @@ function SharePlace() {
                 </FormField>
               </div>
             </div>
-
             {/* <button onClick={geoloc()} className="border-2 bg-pink-500">
             {' '}
             Geolocalisez moi{' '}
           </button> */}
-            <p className="text-gray-300">
-              En cliquant sur Partagez vous acceptez les conditions
-              d'utilisations de Space-Park
-            </p>
+            <div className="flex items-center pb-6">
+              <Checkbox defaultChecked />
+              <p className="text-gray-300">
+                En cliquant sur partagez vous acceptez les conditions
+                d'utilisations de Space-Park
+              </p>
+            </div>
             <div className="w-30 pb-10">
               <Button
                 type="submit"

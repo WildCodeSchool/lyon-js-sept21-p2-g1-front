@@ -93,6 +93,8 @@ export default function Maps() {
       >
         {spots.map((spot) => {
           const SpotLocation = { lat: spot.lat, lng: spot.lon };
+          const SpotLocationMarker = { lat: spot.lat + 0.0025, lng: spot.lon };
+
           const wazeSpot = `https://www.waze.com/ul?ll=${spot.lat}%2C${spot.lon}&navigate=yes&zoom=17`;
 
           return (
@@ -109,11 +111,11 @@ export default function Maps() {
               {selectedSpot === spot.id ? (
                 <InfoWindow
                   key={uniqid()}
-                  position={SpotLocation}
+                  position={SpotLocationMarker}
                   disableAutoPan="true"
                 >
-                  <div>
-                    <h4 className="text-yellow-500">
+                  <div className="flex items-center justify-center flex-col">
+                    <h4 className="text-yellow-500 text-lg">
                       Place proposée par {spot.userName}
                     </h4>
                     <img
@@ -121,7 +123,7 @@ export default function Maps() {
                       alt="place proposée"
                       className="w-auto h-30 bg-cover rounded-xl shadow-xl"
                     />
-                    <button className="flex items-center mt-2 btnWaze">
+                    <button className="flex items-center mt-6 btnWaze">
                       <div className="svg-wrapper-1">
                         <div className="svg-wrapper">
                           <svg
@@ -141,10 +143,10 @@ export default function Maps() {
                       <a
                         href={wazeSpot}
                         target="blank"
-                        className="flex items-center"
+                        className="flex items-center justify-center"
                       >
                         <span> Waze</span>
-                        <img src="iconWaze.png" alt="waze w-1" />
+                        <img src="iconWaze.png" alt="waze" />
                       </a>
                     </button>
                   </div>
@@ -155,10 +157,19 @@ export default function Maps() {
         })}
         {parkings.map((parking) => {
           const Parklocation = { lat: parking.lat, lng: parking.lon };
+          const ParklocationMarker = {
+            lat: parking.lat + 0.0025,
+            lng: parking.lon,
+          };
+          const price = parking.reglementation;
+
           const handi = parking.capacitepmr;
           const height = parking.gabarit;
           const carShare = parking.capaciteautopartage;
           const wazePark = `https://www.waze.com/ul?ll=${parking.lat}%2C${parking.lon}&navigate=yes&zoom=17`;
+          const icon = () => {
+            return price === 'Gratuit' ? `car-park.png` : `car-park2.png`;
+          };
           return (
             <div key={uniqid()}>
               <Marker
@@ -167,13 +178,13 @@ export default function Maps() {
                 position={Parklocation}
                 onClick={() => setSelected(parking.gid)}
                 icon={{
-                  url: `car-park.png`,
+                  url: icon(),
                 }}
               />
               {selected === parking.gid ? (
                 <InfoWindow
                   key={uniqid()}
-                  position={Parklocation}
+                  position={ParklocationMarker}
                   disableAutoPan="true"
                 >
                   <>

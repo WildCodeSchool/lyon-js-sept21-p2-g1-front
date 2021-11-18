@@ -12,6 +12,7 @@
     "@material-ui/core": "^4.12.3",
     "@mui-treasury/components": "^1.10.1",
     "@mui-treasury/styles": "^1.13.1",
+    "@material/checkbox": "^13.0.0",
     "@mui/icons-material": "^5.1.1",
     "@mui/material": "^5.1.1",
     "@mui/styled-engine-sc": "^5.1.0",
