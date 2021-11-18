@@ -14,7 +14,7 @@ const SimpleSlider = () => {
   };
   return (
     <Slider {...settings}>
-      <div>
+      <div className="border-double">
         <img src="https://picsum.photos/id/100/400/300" />
       </div>
       <div>
