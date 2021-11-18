@@ -33,7 +33,7 @@ function sharePlace() {
           const lon = position.coords.longitude;
           const lat = position.coords.latitude;
           axios
-            .post('http://localhost:5001/streetParkingSpots', {
+            .post(`${process.env.REACT_APP_API_BASE_URL}/streetParkingSpots`, {
               userName,
               lat,
               lon,
