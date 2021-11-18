@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
-import SimpleSlider from './Slider';
+// import SimpleSlider from './Slider';
 
 const Footer = () => (
   <div className="bg-secondary w-full h-96 flex justify-center items-center flex-col">
@@ -9,7 +9,7 @@ const Footer = () => (
       <Icon name="instagram" size="big" color="orange" />
       <Icon name="twitter" size="big" color="orange" />
     </div>
-    <SimpleSlider />
+    {/* <SimpleSlider /> */}
     <div className="copyrit">
       <p className="text-white"> © Space Park 2021 </p>
     </div>

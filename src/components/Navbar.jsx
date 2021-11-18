@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="flex justify-center ">
           <ul className="flex  md:flex-row">
             <li className="text-2xl md:text-2xl">
-              <Link to="/">Acceuil</Link>
+              <Link to="/">Accueil</Link>
             </li>
             <li className="text-2xl font-bold md:text-2xl">
               <Link to="/share">Partage</Link>

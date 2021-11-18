@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 import { Button, Form, FormField } from 'semantic-ui-react';
 import axios from 'axios';
-import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
@@ -121,13 +120,7 @@ function SharePlace() {
             {' '}
             Geolocalisez moi{' '}
           </button> */}
-            <div className="flex items-center pb-6">
-              <Checkbox defaultChecked />
-              <p className="text-gray-300">
-                En cliquant sur partagez vous acceptez les conditions
-                d'utilisations de Space-Park
-              </p>
-            </div>
+
             <div className="w-30 pb-10">
               <Button
                 type="submit"
