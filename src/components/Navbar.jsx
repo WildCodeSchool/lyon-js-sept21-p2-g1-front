@@ -10,20 +10,20 @@ const Navbar = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="flex justify-center ">
-          <ul className="flex  md:flex-row">
-            <li className="text-2xl md:text-2xl">
+          <ul className="w-full m-966 ml-0 justify-self-start flex mr-12 m md:flex-row md:m-auto md:pl-0">
+            <li className="text-xl md:text-2xl">
               <Link to="/">Accueil</Link>
             </li>
-            <li className="text-2xl font-bold md:text-2xl">
+            <li className="text-xl font-bold md:text-2xl">
               <Link to="/share">Partage</Link>
             </li>
-            <li className="text-2xl font-bold md:text-2xl">
+            <li className="text-xl font-bold md:text-2xl">
               <Link to="/rating">Avis</Link>
             </li>
-            <li className="text-2xl font-bold md:text-2xl">
+            <li className="text-xl font-bold md:text-2xl">
               <Link to="/map">Carte</Link>
             </li>
-            <li className="text-2xl font-bold md:text-2xl">
+            <li className="text-xl font-bold md:text-2xl">
               <Link to="/aboutUs">A propos</Link>
             </li>
           </ul>
