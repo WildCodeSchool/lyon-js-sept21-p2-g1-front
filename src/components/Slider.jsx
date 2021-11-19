@@ -16,7 +16,10 @@ const SimpleSlider = () => {
 
   const fetcher = (...args) =>
     fetch(...args).then((response) => response.json());
-  const { data, error } = useSWR('http://localhost:5001/ratings', fetcher);
+  const { data, error } = useSWR(
+    `${process.env.REACT_APP_API_BASE_URL}/ratings`,
+    fetcher
+  );
   const ratings = data && !error ? data.slice(0, 4) : [];
   return (
     <Slider {...settings}>
