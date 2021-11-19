@@ -44,6 +44,7 @@ body {
 .ui.star.rating .icon {
   color: white !important;
 }
+
 #phone {
   padding-right: 60%;
 }
@@ -73,4 +74,8 @@ body {
   #slider {
     width: 300px;
   }
+}
+
+.mediaStyles {
+  width: 400px;
 }

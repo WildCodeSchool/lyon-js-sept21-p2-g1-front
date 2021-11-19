@@ -32,28 +32,33 @@ function Home() {
           {/* Card */}
         </div>
         {/* smartPhone */}
+
         <div className="phone pb-12" id="phone">
           <Phone />
         </div>
 
         {/* CardCity */}
-        <div className="card__city_Mui grid pb-20">
+        <div className="card__city_Mui grid pb-20 w-full px-10 py-10 md:py-20 md:px-20">
           <div className="cardCity grid grid-cols-1 gap-x-20 pb-14 md:grid-cols-3 gap-y-10">
             <a href="https://lyon-js-sept21-p2-g1-front.comicscrip.duckdns.org/map?search=Gare%20de%20Lyon%20Part%20-%20Dieu%2C%20Place%20Charles%20B%C3%A9raudier%2C%20Lyon%2C%20France">
-              <CardCityMui img={pardieu} name="Lyon Part Dieu" quantity="875" />
+              <CardCityMui
+                img={pardieu}
+                name="Lyon Part Dieu"
+                quantity="1875 places disponibles"
+              />
             </a>
             <a href="https://lyon-js-sept21-p2-g1-front.comicscrip.duckdns.org/map?search=Gare%20de%20Lyon%20Perrache%2C%20Cours%20de%20Verdun%20Gensoul%2C%20Lyon%2C%20France">
               <CardCityMui
                 img={perrache}
                 name="Lyon Perrache"
-                quantity="1300"
+                quantity="1300 places disponibles"
               />
             </a>
             <a href="https://lyon-js-sept21-p2-g1-front.comicscrip.duckdns.org/map?search=Lyon%20Saint-Exup%C3%A9ry%20TGV%2C%20Colombier-Saugnieu%2C%20France">
               <CardCityMui
                 img={aeroport}
                 name="Aeroport St Exupery"
-                quantity="1234 places disponibles"
+                quantity="7500 places disponibles"
               />
             </a>
           </div>

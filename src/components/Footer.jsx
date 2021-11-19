@@ -2,6 +2,8 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import SimpleSlider from './Slider';
 
+// import SimpleSlider from './Slider';
+
 const Footer = () => (
   <div className="bg-secondary w-full h-96 flex justify-center items-center flex-col">
     <SimpleSlider />

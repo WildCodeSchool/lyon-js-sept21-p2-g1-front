@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Rating } from 'semantic-ui-react';
+import Swal from 'sweetalert2';
 
 import img from '../assets/parkingRating.jpg';
 
@@ -20,7 +21,15 @@ function ApiRating() {
         note: userRating,
       })
       .then(() => {
-        alert('Merci pour votre participation.');
+        Swal.fire({
+          title: 'Well done 😀',
+          text: 'Space Park te remercie pour le partage de ton avis',
+          imageUrl:
+            'https://media.giphy.com/media/J4sITQCofMaKpx7EWq/giphy.gif',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'gif succes',
+        });
       });
   };
 
@@ -46,7 +55,7 @@ function ApiRating() {
         />
       </div>
       <p className="pt-20 p-30 text-xl flex flex-col text-center italic justify-center text-gray-100	">
-        Merci de bien vouloir nous donner 5 min.de votre temps pour évaluer
+        Merci de bien vouloir nous donner 5 min de votre temps pour évaluer
         l'application.🧐
       </p>
       <div className="flex items-center justify-center pb-10">

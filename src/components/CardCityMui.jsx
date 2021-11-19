@@ -5,9 +5,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteBorderRounded from '@mui/icons-material/FavoriteBorderRounded';
-import Share from '@mui/icons-material/Share';
+
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
 import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
@@ -15,7 +13,8 @@ import TextInfoContent from '@mui-treasury/components/content/textInfo';
 
 // const useStyles = makeStyles(() => ({
 //   root: {
-//     width: 450,
+//     width: 350,
+//     height: 200,
 //     margin: 'auto',
 //   },
 //   content: {
@@ -38,14 +37,7 @@ const CardCityMui = React.memo(function PostCard({ img, name, quantity }) {
           body={quantity}
         />
       </CardContent>
-      <Box px={5} pb={2} mt={0}>
-        <IconButton>
-          <Share />
-        </IconButton>
-        <IconButton>
-          <FavoriteBorderRounded />
-        </IconButton>
-      </Box>
+      <Box px={5} pb={2} mt={0} />
     </Card>
   );
 });
