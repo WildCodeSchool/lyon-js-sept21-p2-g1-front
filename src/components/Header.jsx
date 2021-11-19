@@ -3,9 +3,6 @@ import img from '../assets/parking.jpg';
 import { Search } from './Maps';
 import LoadingMapsContext from '../contexts/LoadingMapsContext';
 
-// import { Search } from './Maps';
-// import Navbar from './Navbar';
-
 function Header() {
   const { isLoaded } = useContext(LoadingMapsContext);
 
@@ -15,8 +12,8 @@ function Header() {
         <div className="background w-screen h-full ">
           <img id="background" src={img} alt="parking" />
         </div>
-        <div className="searchBarflex items-center justify-center mx-auto absolute top-52 w-screen">
-          {/* <Search /> */}
+        {/* <Search /> */}
+        <div className="searchBar focus:outline-none focus:ring focus:border-yellow-500  absolute top-64 w-screen">
           {isLoaded && <Search />}
         </div>
       </div>

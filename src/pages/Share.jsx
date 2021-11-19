@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Widget } from '@uploadcare/react-widget';
 import { Button, Form, FormField } from 'semantic-ui-react';
 import axios from 'axios';
-import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 import imgBg from '../assets/carParkFull.jpg';
 import '../share.css';
@@ -18,7 +17,7 @@ const customBtn = () => ({
   },
 });
 
-function sharePlace() {
+function SharePlace() {
   const [userName, setUserName] = useState('');
 
   const [img, setImage] = useState('');
@@ -92,16 +91,14 @@ function sharePlace() {
               <div className="boxInput flex-col justify-center p-2">
                 <div>
                   <Form.Field>
-                    <label htmlFor="name" className="text-gray-100">
-                      <p className="text-center text-gray-300"> Votre nom : </p>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        className="m-2 flex flex-col justify-center w-44"
-                        onChange={handleNameChange}
-                      />
-                    </label>
+                    <p className="text-center text-gray-300"> Votre nom : </p>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      className="m-2 flex flex-col justify-center w-44"
+                      onChange={handleNameChange}
+                    />
                   </Form.Field>
                 </div>
 
@@ -123,13 +120,7 @@ function sharePlace() {
             {' '}
             Geolocalisez moi{' '}
           </button> */}
-            <div className="flex items-center pb-6">
-              <Checkbox defaultChecked />
-              <p className="text-gray-300">
-                En cliquant sur partagez vous acceptez les conditions
-                d'utilisations de Space-Park
-              </p>
-            </div>
+
             <div className="w-30 pb-10">
               <Button
                 type="submit"
@@ -157,4 +148,4 @@ function sharePlace() {
   );
 }
 
-export default sharePlace;
+export default SharePlace;

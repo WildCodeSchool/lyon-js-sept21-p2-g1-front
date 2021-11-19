@@ -3,8 +3,8 @@ import '../search.css';
 
 const LegendMaps = () => {
   return (
-    <div className="boxInfo flex justify-center pt-14 items-center pb-10 flex-col md:flex-row">
-      <div className="boxLegend border-2 border-gray-400 rounded-3xl  shadow-2xl flex flex-row">
+    <div className="boxInfo flex justify-center pt-14 items-center pb-10 flex-col md:flex-row p-4">
+      <div className="boxLegend border-2 border-gray-400 rounded-3xl  shadow-2xl flex flex-col md:flex-row items-center">
         <div className="flex flex-col justify-around items-start pl-4">
           <div className="flex items-center mt-2">
             <img src="car-park.png" alt="parking gratuit" />
@@ -54,7 +54,7 @@ const LegendMaps = () => {
       </div>
       <div className="DataBox flex items-center m-8 justify-center flex-col">
         <img src="grandLyon.jpeg" alt="Grand Lyon Logo " />
-        <p className="italic text-gray-600">
+        <p className="italic text-gray-600 text-center">
           Les datas sont fournies à titre indicatif par la métropole de Lyon.
         </p>
       </div>

@@ -40,3 +40,42 @@ body {
     rgb(29, 26, 26)
   );
 }
+
+.ui.star.rating .icon {
+  color: white !important;
+}
+
+#phone {
+  padding-right: 60%;
+}
+
+.slick-slider {
+  width: 100% !important;
+  margin: 6em !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.slick-list {
+  margin: 0 -26px 20px 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.copyright {
+  margin-bottom: 3rem;
+}
+#slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  width: 60% !important;
+}
+
+@media screen and (max-width: 540px) {
+  #slider {
+    width: 300px;
+  }
+}
+
+.mediaStyles {
+  width: 400px;
+}
