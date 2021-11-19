@@ -20,7 +20,7 @@ const SimpleSlider = () => {
     `${process.env.REACT_APP_API_BASE_URL}/ratings`,
     fetcher
   );
-  const ratings = data && !error ? data.slice(0, 4) : [];
+  const ratings = data && !error ? data : [];
   return (
     <Slider {...settings}>
       {ratings.map((rating) => {
