@@ -37,7 +37,7 @@ function Home() {
         </div>
 
         {/* CardCity */}
-        <div className="card__city_Mui grid pb-20">
+        <div className="card__city_Mui grid pb-20 w-full px-10 py-10 md:py-20 md:px-20">
           <div className="cardCity grid grid-cols-1 gap-x-20 pb-14 md:grid-cols-3 gap-y-10">
             <a href="https://lyon-js-sept21-p2-g1-front.comicscrip.duckdns.org/map?search=Gare%20de%20Lyon%20Part%20-%20Dieu%2C%20Place%20Charles%20B%C3%A9raudier%2C%20Lyon%2C%20France">
               <CardCityMui img={pardieu} name="Lyon Part Dieu" quantity="875" />

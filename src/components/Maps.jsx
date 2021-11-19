@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GoogleMap,
   useLoadScript,
@@ -353,7 +353,7 @@ export function Search({ panTo }) {
       radius: 100 * 1000,
     },
   });
-  React.useEffect(() => {
+  useEffect(() => {
     setValue(qs.parse(location.search).search, false);
     setAddress(qs.parse(location.search).search);
   }, [location]);
@@ -367,7 +367,7 @@ export function Search({ panTo }) {
       // console.log('😱 Error: ', error);
     }
   };
-  React.useEffect(() => {
+  useEffect(() => {
     geocode(address);
   }, [address]);
   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
@@ -395,7 +395,7 @@ export function Search({ panTo }) {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            className="w-full shadow-2xl p-3 flex border-2 border-primary h-12 rounded-md focus:outline-none text-gray-700 text-lg mx-4 items-center text-center md:w-3/4"
+            className="w-full shadow-2xl p-3 flex  h-12 rounded-lg text-gray-700 text-lg mx-4 items-center text-center md:w-3/4"
             placeholder="🔎 Ou souhaitez vous trouver une place ? 🚗 "
           />
         </div>

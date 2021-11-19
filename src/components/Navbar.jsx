@@ -4,7 +4,7 @@ import logo from '../assets/logo_without_background.png';
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-center items-center z-10">
+    <nav className="flex justify-center items-center z-10 pt-5">
       <div className="flex justify-center items-center">
         <div className="hidden md:flex">
           <img src={logo} alt="Logo" />

@@ -15,7 +15,8 @@ import TextInfoContent from '@mui-treasury/components/content/textInfo';
 
 // const useStyles = makeStyles(() => ({
 //   root: {
-//     width: 450,
+//     width: 350,
+//     height: 200,
 //     margin: 'auto',
 //   },
 //   content: {
