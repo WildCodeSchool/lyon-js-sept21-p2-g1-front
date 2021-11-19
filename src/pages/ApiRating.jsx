@@ -15,7 +15,7 @@ function ApiRating() {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5001/ratings', {
+      .post(`${process.env.REACT_APP_API_BASE_URL}/ratings`, {
         name: newUserName,
         message: newUserMessage,
         note: userRating,
