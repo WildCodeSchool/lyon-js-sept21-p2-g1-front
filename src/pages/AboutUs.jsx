@@ -3,11 +3,17 @@ import img1 from '../assets/Pegase.JPG';
 import img2 from '../assets/Cat1.jpg';
 import img3 from '../assets/Cat2.jpg';
 import img4 from '../assets/Cat3.jpg';
+import '../index.css';
+import img from '../assets/bgAboutUs.jpg';
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-100">
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+    <div id="section">
+      <div className="lg:h-40">
+        <img className="object-cover h-48 w-full" src={img} alt="parking" />
+      </div>
+
+      <section className="max-w-6xl mx-auto pt-20 px-4 sm:px-6 lg:px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
             <div className="w-full md:w-2/5 h-80">
@@ -288,4 +294,5 @@ const AboutUs = () => {
     </div>
   );
 };
+
 export default AboutUs;

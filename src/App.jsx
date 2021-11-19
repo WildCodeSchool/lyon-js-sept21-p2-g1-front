@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Divide as Hamburger } from 'hamburger-react';
 import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
@@ -21,7 +21,7 @@ function App() {
           <Navbar />
         </div>
         {/* Hamburger Navigation */}
-        <div className="hamurgerOpen visible flex md:invisible absolute cursor-pointer left-10 top-5 ">
+        <div className="hamurgerOpen visible flex md:invisible absolute cursor-pointer top-5 ">
           <Hamburger color="white" rounded toggled={isOpen} toggle={setOpen} />
           {isOpen && <Navbar />}
         </div>
